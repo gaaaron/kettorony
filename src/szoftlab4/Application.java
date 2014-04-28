@@ -12,13 +12,14 @@ public class Application {
 
 	public static Game game = new Game();
 	public static TesztAblak ablak;
+	public static Message return_message;
 
 	/*
 	 * Prototípus konzolos felületének parancsai
 	 */
 	private static enum Code {
 		loadmap(1), printstate(0), tick(0), printpower(0), printgems(0), buygem(1), addtower(3), addtowergem(2), addtrap(3),
-		addtrapgem(2), addenemy(4), addspecialprojectile(1), addfog(1), enemydirection(2), exit(0), error(0), enter(0), show(0), showData(0);
+		addtrapgem(2), addenemy(4), addspecialprojectile(1), addfog(1), enemydirection(2), exit(0), error(0), enter(0), show(0), magic(0), showData(0);
 
 		public int param_count; 	//kódszót követõ szükséges paraméterek száma
 		/*
@@ -65,7 +66,7 @@ public class Application {
 		boolean exit_flag = false;
 		String line = null;
 		String[] parancs = null;
-		Message return_message = new Message();
+		return_message = new Message();
 
 		try {
 
@@ -151,6 +152,10 @@ public class Application {
 					break;
 				case show:
 					if(parancs.length > Code.exit.param_count) 			show(return_message);
+					else												return_message.text = "Invalid parameter";
+					break;
+				case magic:
+					if(parancs.length > Code.exit.param_count) 			start();
 					else												return_message.text = "Invalid parameter";
 					break;
 				default:
@@ -624,13 +629,23 @@ public class Application {
 		
 	}
 	
-	public static void showData(Application.Message msg){
+	public static synchronized void showData(Application.Message msg){
 		
 		String szoveg = new String();
+		
+		szoveg="    ";
+		for(int i=0;i<Application.game.jatekter.cellak.get(0).size();i++){
+			szoveg += i+"\t\t";
+		}
+		szoveg += "\n";
+		int j=0;
+		
 		for(ArrayList<Cella> sor : Application.game.jatekter.cellak){
+			szoveg += j+"  ";
+			j++;
 			for(Cella cella : sor){
 				if(cella instanceof Mezo){
-					if(((Mezo) cella).rajtamvan.size() == 0) szoveg += "M ";
+					if(((Mezo) cella).rajtamvan.size() == 0) szoveg += "* ";
 					else{
 						for(Mezorevalo m : ((Mezo) cella).rajtamvan){
 							szoveg += ((Torony)m).id + " ";
@@ -638,7 +653,9 @@ public class Application {
 					}
 				}
 				else{
-					if(((Ut) cella).rajtamvan.size() == 0 && ((Ut)cella).akadaly == null) szoveg += "U ";
+					if( ((Ut)cella).akadaly != null) szoveg += ((Ut)cella).akadaly.id + " ";
+					
+					if(((Ut) cella).rajtamvan.size() == 0 && ((Ut)cella).akadaly == null) szoveg += "# ";
 					else{
 						for(Utravalo m : ((Ut) cella).rajtamvan){
 							//TODO: VégzetHegye is kikerüljön a rajtamvan litából?
@@ -646,9 +663,8 @@ public class Application {
 							else if(m instanceof VegzetHegye) szoveg += "V ";
 						}
 					}
-					if( ((Ut)cella).akadaly != null) szoveg += ((Ut)cella).akadaly.id + " ";
 				}
-				szoveg += "\t\t|";
+				szoveg += "\t\t";
 			}
 			szoveg += "\n";
 		}
@@ -657,6 +673,10 @@ public class Application {
 		ablak.status.setText(msg.text);
 		
 		
+	}
+	
+	public static void start(){
+		Application.game.controller.startTick();
 	}
 
 }

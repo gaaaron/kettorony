@@ -26,9 +26,11 @@ public class TesztAblak extends JFrame {
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		
 		palya = new JTextPane();
+		palya.setEditable(false);
 		contentPane.add(palya);
 		
 		status = new JTextPane();
+		status.setEditable(false);
 		contentPane.add(status);
 		isVisible=false;
 	}

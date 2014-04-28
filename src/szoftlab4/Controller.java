@@ -16,17 +16,13 @@ public class Controller implements Runnable{
 	//Tick szál és az azt leállító flag
 	private Thread ticker;
 	public volatile boolean STOP;
-    public void addNotify() {
-    	STOP=true;
-        ticker = new Thread(this);
-        ticker.start();
-    }
+	
 	@Override
 	public void run() {
         while (!STOP) {
         	addTick();
         	try {
-				Thread.sleep(500);
+				Thread.sleep(300);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -38,7 +34,7 @@ public class Controller implements Runnable{
 	public Controller(Jatekter ter) { 
 		jatekter = ter;
 		aktiv = new ArrayList<Aktiv>();
-		STOP = false;
+		STOP = true;
 	}
 
 	// Pálya kiválasztása, játékos felruházása varázserõvel
@@ -51,7 +47,9 @@ public class Controller implements Runnable{
 	}
 	
 	public void startTick() { // Tick szál indítása
-		this.notify();
+		STOP=false;
+        ticker = new Thread(this);
+        ticker.start();
 	}
 	
 	public void addTick(){	//Minden elem kap egy ticket
@@ -59,6 +57,8 @@ public class Controller implements Runnable{
 			elem.tick();
 		}
 		Application.game.ellensegkeszito.tick();
+		Application.printstate(Application.return_message);
+		Application.showData(Application.return_message);
 	}
 
 	//Egy ellenség halála után, a játékos varázserõt kap
