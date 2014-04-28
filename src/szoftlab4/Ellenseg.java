@@ -6,8 +6,7 @@ import java.util.ArrayList;
 
 public class Ellenseg implements Utravalo, Aktiv {
 
-	//TODO: töröld ki
-	
+
 	public String id;
 
 	public int count;
@@ -88,21 +87,21 @@ public class Ellenseg implements Utravalo, Aktiv {
 
 	// Kiválaszt egy utat ahova lépni szeretne
 	public void lepek(ArrayList<Ut> utak) {
-		
+
 		if (elozoUt != null) {
 			utak.remove(elozoUt);
 		}
-		
-		Random randomGenerator = new Random();
-		int index = randomGenerator.nextInt(utak.size());
-		
-		System.out.println(index);
-		Ut kovetkezout = utak.get(index);
-		
-		elozoUt = sajatUt;
-		
-		sajatUt.levesz(this);
-		kovetkezout.ratesz(this);
+		if (utak.size() > 0) {
+			Random randomGenerator = new Random();
+			int index = randomGenerator.nextInt(utak.size());
+
+			Ut kovetkezout = utak.get(index);
+
+			elozoUt = sajatUt;
+
+			sajatUt.levesz(this);
+			kovetkezout.ratesz(this);
+		}
 	}
 
 	// A sajatUt attribútumot inicializálja
