@@ -56,6 +56,13 @@ public class Ut extends Cella{
 	//A közelben lévõ utak listájával tér vissza, ahová az ellenség léphet
 	public ArrayList<Ut> lepnek()					
 	{
+		boolean lephet = false;
+		
+		if(akadaly != null)
+			lephet = akadaly.lephete();
+		
+		
+		if(akadaly == null || lephet){
 		ArrayList<Ut> temp = new ArrayList<Ut>();
 		ArrayList<Cella> cellak = getSzomszedok();
 		for(int i = 0; i<cellak.size();i++){
@@ -63,6 +70,7 @@ public class Ut extends Cella{
 				temp.add((Ut)cellak.get(i));
 		}
 		return temp;
+		} else return null;
 	}
 
 }

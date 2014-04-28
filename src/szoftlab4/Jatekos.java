@@ -52,7 +52,7 @@ public class Jatekos {
 	public boolean ujAkadaly(Ut valasztottUt, Akadaly ezt, Application.Message msg) {
 		
 		if(varazsero>=20){
-			valasztottUt.ratesz(ezt);
+			valasztottUt.akadaly = ezt;
 			varazserotVeszit(20);
 			msg.text = "Akadaly letrehozva";
 			return true;

@@ -23,14 +23,14 @@ public class Akadaly implements Utravalo {
 	public Akadaly(){
 		sajatUt = null;
 		counter = 0;
-		lassitas = 10;
+		lassitas = 1;
 		ko = null;
 	}
 	
 	public Akadaly(String iduj){
 		sajatUt = null;
 		counter = 0;
-		lassitas = 10;
+		lassitas = 1;
 		ko = null;
 		id= iduj;
 	}
@@ -41,7 +41,7 @@ public class Akadaly implements Utravalo {
 	//Attól függõen engedi lépni a hívót, hogy fel van-e szerelve kõvel, és ha igen, elég régóta nem
 	//léphetett-e.
 		if(ko != null){
-			if((lassitas*2)>= counter){
+			if((lassitas*1)>= counter){
 				counter++;
 				return false;
 				}else{

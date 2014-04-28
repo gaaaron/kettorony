@@ -46,7 +46,8 @@ public class Ellenseg implements Utravalo, Aktiv {
 
 		if (count == sebesseg) {
 			ArrayList<Ut> lehetsegesutak = sajatUt.lepnek();
-			lepek(lehetsegesutak);
+			if(lehetsegesutak != null)
+				lepek(lehetsegesutak);
 			count = 0;
 		} else
 			count++;
