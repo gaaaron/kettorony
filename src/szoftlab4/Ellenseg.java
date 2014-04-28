@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Ellenseg implements Utravalo, Aktiv {
 
-
+ 
 	public String id;
 
 	public int count;
@@ -56,7 +56,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 	// Ha a közelben van egy Végzethegye objektum, ezen függvény segítségével
 	// támadja meg azt
 	public void tamad(VegzetHegye hegy) {
-
+		hegy.sebez(25);
 	}
 
 	// Ha az ellenség életereje nullára csökken, ez a függvény hívódik meg

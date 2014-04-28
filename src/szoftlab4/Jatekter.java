@@ -63,6 +63,7 @@ public class Jatekter {
 							uj
 							);
 					Application.game.hegy = uj;
+					Application.game.controller.aktiv.add(uj);
 			}
 			}
 			

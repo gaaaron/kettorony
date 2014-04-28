@@ -1,6 +1,8 @@
 package szoftlab4;
 
-public class VegzetHegye implements Utravalo {
+import java.util.ArrayList;
+
+public class VegzetHegye implements Utravalo, Aktiv{
 	
 	//Ez tárolja hogy melyik cellán van az objektum
 	private Ut sajatUt;
@@ -41,5 +43,14 @@ public class VegzetHegye implements Utravalo {
 	
 	public int getElet(){
 		return elet;
+	}
+	@Override
+	public void tick() {
+		ArrayList<Ellenseg> ellensegek = sajatUt.kivanrajtam();
+		
+		for(Ellenseg e: ellensegek){
+			e.tamad(this);
+		}
+		
 	}
 }
