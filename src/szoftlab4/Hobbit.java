@@ -1,8 +1,5 @@
 package szoftlab4;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 public class Hobbit extends Ellenseg {
 
 	public Hobbit(Ut sajat) {

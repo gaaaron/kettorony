@@ -1,7 +1,5 @@
 package szoftlab4;
 
-import java.util.ArrayList;
-import java.util.Random;
 
 //Egy speciális ellenségtípus
 public class Torpe extends Ellenseg {

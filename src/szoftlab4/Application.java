@@ -630,7 +630,7 @@ public class Application {
 		for(ArrayList<Cella> sor : Application.game.jatekter.cellak){
 			for(Cella cella : sor){
 				if(cella instanceof Mezo){
-					if(((Mezo) cella).rajtamvan.size() == 0) szoveg += "M";
+					if(((Mezo) cella).rajtamvan.size() == 0) szoveg += "M ";
 					else{
 						for(Mezorevalo m : ((Mezo) cella).rajtamvan){
 							szoveg += ((Torony)m).id + " ";
@@ -638,14 +638,15 @@ public class Application {
 					}
 				}
 				else{
-					if(((Ut) cella).rajtamvan.size() == 0) szoveg += "U";
+					if(((Ut) cella).rajtamvan.size() == 0 && ((Ut)cella).akadaly == null) szoveg += "U ";
 					else{
 						for(Utravalo m : ((Ut) cella).rajtamvan){
-							if(m instanceof Akadaly) szoveg += ((Akadaly)m).id + " ";
-							else if(m instanceof Ellenseg) szoveg += ((Ellenseg)m).id + " ";
+							//TODO: VégzetHegye is kikerüljön a rajtamvan litából?
+							if(m instanceof Ellenseg) szoveg += ((Ellenseg)m).id + " ";
 							else if(m instanceof VegzetHegye) szoveg += "V ";
 						}
 					}
+					if( ((Ut)cella).akadaly != null) szoveg += ((Ut)cella).akadaly.id + " ";
 				}
 				szoveg += "\t\t|";
 			}

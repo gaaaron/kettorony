@@ -18,8 +18,8 @@ public class Jatekos {
 
 	//Vásáról egy követ, hogyha a játékosnak van rá elég varázsereje
 	public void vasarol(Varazsko v) {
-		if (v.getAr() <= varazsero) {
-			varazserotVeszit(v.getAr());
+		if (Varazsko.getAr() <= varazsero) {
+			varazserotVeszit(Varazsko.getAr());
 			varazskovek.add(v);
 		}
 	}
@@ -53,6 +53,7 @@ public class Jatekos {
 		
 		if(varazsero>=20){
 			valasztottUt.akadaly = ezt;
+			ezt.init(valasztottUt);
 			varazserotVeszit(20);
 			msg.text = "Akadaly letrehozva";
 			return true;
