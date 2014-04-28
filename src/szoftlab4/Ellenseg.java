@@ -57,6 +57,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 	// támadja meg azt
 	public void tamad(VegzetHegye hegy) {
 		hegy.sebez(25);
+		this.meghal();
 	}
 
 	// Ha az ellenség életereje nullára csökken, ez a függvény hívódik meg
