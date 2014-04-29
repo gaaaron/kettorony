@@ -364,38 +364,80 @@ public class Application {
 
 	public static boolean addtowergem(String args[], Application.Message msg) {
 		boolean megvan = false;
+		boolean vanbenne = false;
+		int iindex = 0;
 		
 		Toronykovek ko;
 
 		if (args[2].matches("barna")) {
-			ko= new Barnavarazsko();
+			for(int i = 0;i<game.jatekter.felhasznalo.varazskovek.size();i++){
+				if(game.jatekter.felhasznalo.varazskovek.get(i) instanceof Barnavarazsko)
+				{
+					vanbenne = true;
+					iindex = i;
+				}
+			}
 		}
 		else if (args[2].matches("kek")) {
-			ko= new Kekvarazsko();
+			for(int i = 0;i<game.jatekter.felhasznalo.varazskovek.size();i++){
+				if(game.jatekter.felhasznalo.varazskovek.get(i) instanceof Kekvarazsko)
+				{
+					vanbenne = true;
+					iindex = i;
+				}
+			}
 		}
 		else if (args[2].matches("narancs")) {
-			ko= new Narancsvarazsko();
+			for(int i = 0;i<game.jatekter.felhasznalo.varazskovek.size();i++){
+				if(game.jatekter.felhasznalo.varazskovek.get(i) instanceof Narancsvarazsko)
+				{
+					vanbenne = true;
+					iindex = i;
+				}
+			}
 		}
 		else if (args[2].matches("piros")) {
-			ko= new Pirosvarazsko();
+			for(int i = 0;i<game.jatekter.felhasznalo.varazskovek.size();i++){
+				if(game.jatekter.felhasznalo.varazskovek.get(i) instanceof Pirosvarazsko)
+				{
+					vanbenne = true;
+					iindex = i;
+				}
+			}
 		}
 		else if (args[2].matches("sarga")) {
-			ko= new Sargavarazsko();
+			for(int i = 0;i<game.jatekter.felhasznalo.varazskovek.size();i++){
+				if(game.jatekter.felhasznalo.varazskovek.get(i) instanceof Sargavarazsko)
+				{
+					vanbenne = true;
+					iindex = i;
+				}
+			}
 		}
 		else if (args[2].matches("zold")) {
-			ko= new Zoldvarazsko();
+			for(int i = 0;i<game.jatekter.felhasznalo.varazskovek.size();i++){
+				if(game.jatekter.felhasznalo.varazskovek.get(i) instanceof Zoldvarazsko)
+				{
+					vanbenne = true;
+					iindex = i;
+				}
+			}
 		}
 		else{
 			msg.text ="Nincs ilyen kotipus";
 			return false;
 		}
 		
-		if (game.jatekter.felhasznalo.varazskovek.contains(ko)) {
 
+		
+		if (vanbenne) {
+
+			Toronykovek toronyko = (Toronykovek)game.jatekter.felhasznalo.varazskovek.get(iindex);
+			
 			for(Torony a : game.toronylista){
 				if (a.id.equals(args[1])){
-					game.jatekter.felhasznalo.fejleszt(a, ko);
-					game.jatekter.felhasznalo.varazskovek.remove(ko);
+					game.jatekter.felhasznalo.fejleszt(a, toronyko);
+					game.jatekter.felhasznalo.varazskovek.remove(iindex);
 					msg.text = "Varazsko hozzaadva";
 					megvan = true;
 					return true;
