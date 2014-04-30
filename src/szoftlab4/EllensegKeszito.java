@@ -9,6 +9,7 @@ public class EllensegKeszito implements Aktiv {
 		public ArrayList<Ut> belepoUtak;
 		public ArrayList<Ellenseg> osztodott;
 		public ArrayList<Ellenseg> meghalt;
+		private int id=0;
 		
 		//Az EllensegKeszito paraméteres konstruktora. Át kell neki adni a belépõutak listáját.
 		/*public EllensegKeszito(ArrayList<Ut> utak){
@@ -25,30 +26,49 @@ public class EllensegKeszito implements Aktiv {
 		//Tick hatására választ egy utat, majd bizonyos valószínûséggel lerak oda egy
 		//véletlenül kiválasztott ellenséget
 		public void tick(){  
-	         
-			//TODO: ellenség egyedi id-t kapjon
-			/*Random randomGenerator = new Random();
-			int index = randomGenerator.nextInt(10);
-			
-			if(index == 1){
-			
-				String ellenseg;
-				
-				Ut valasztott = utatValaszt();
-				ellenseg = getEllensegTipus();
-				
-				if(ellenseg.matches("Hobbit"))
-					valasztott.ratesz(new Hobbit(valasztott));
-				else if(ellenseg.matches("Tünde"))
-					valasztott.ratesz(new Tunde(valasztott));
-				else if(ellenseg.matches("Ember"))
-					valasztott.ratesz(new Ember(valasztott));
-				else
-					valasztott.ratesz(new Torpe(valasztott));
-				
-			}*/
 			osztodottBetesz();
 			meghaltKivesz();
+			
+			Random randomGenerator = new Random();
+			int index = randomGenerator.nextInt(15);
+				
+			if(index == 1){
+				
+				String ellenseg;
+					
+				Ut valasztott = utatValaszt();
+				ellenseg = getEllensegTipus();
+					
+				index = id;
+				id++;
+					
+				if(ellenseg.matches("Hobbit")){
+					Hobbit h = new Hobbit(valasztott);
+					Application.game.controller.aktiv.add(h);
+					Application.game.ellenseglista.add(h);
+					h.id = "ho"+index;
+					valasztott.ratesz(h);
+				}else if(ellenseg.matches("Tunde")){
+					Tunde h = new Tunde(valasztott);
+					Application.game.controller.aktiv.add(h);
+					Application.game.ellenseglista.add(h);
+					h.id = "tn"+index;
+					valasztott.ratesz(h);
+				}else if(ellenseg.matches("Ember")){
+					Ember h = new Ember(valasztott);
+					Application.game.controller.aktiv.add(h);
+					Application.game.ellenseglista.add(h);
+					h.id = "em"+index;
+					valasztott.ratesz(h);
+				}else{
+					Torpe h = new Torpe(valasztott);
+					Application.game.controller.aktiv.add(h);
+					Application.game.ellenseglista.add(h);
+					h.id = "tr"+index;
+					valasztott.ratesz(h);
+				}
+					
+			}
 		}
 		
 		//Véletlenszerûen kiválaszt egy ellenségtípust, és visszaadja azt String-ként
@@ -62,7 +82,7 @@ public class EllensegKeszito implements Aktiv {
 			{
 			case 0: mitad = new String("Ember"); break;
 			case 1: mitad = new String("Hobbit"); break;
-			case 2: mitad = new String("Torp"); break;
+			case 2: mitad = new String("Torpe"); break;
 			case 3: mitad = new String("Tunde"); break;
 			}
 			

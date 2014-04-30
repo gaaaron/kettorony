@@ -17,7 +17,7 @@ public class VegzetHegye implements Utravalo, Aktiv{
 	}
 	public VegzetHegye(Cella sj){
 		sajatUt = (Ut)sj;
-		elet = 100;
+		elet = 300;
 	}
 	
 	//A torony életét lecsökkkenti a paraméterben kapott mennyiséggel
