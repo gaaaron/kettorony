@@ -47,7 +47,7 @@ public class Jatekter {
 						Ut ut = new Ut();
 						cellak.get(i).add(ut);
 						
-						if( ( i == 0 || i==(sizeI-1) ) && ( j == 0 || j==(sizeJ-1) ) ) Application.game.ellensegkeszito.belepoUtak.add(ut);
+						if( ( i == 0 || i==(sizeI-1) ) || ( j == 0 || j==(sizeJ-1) ) ) Application.game.ellensegkeszito.belepoUtak.add(ut);
 					}
 					else 							break;
 				}
