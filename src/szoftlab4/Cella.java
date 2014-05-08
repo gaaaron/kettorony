@@ -1,65 +1,69 @@
 package szoftlab4;
 
+import java.awt.Point;
 import java.util.ArrayList;
+
+import szoftlab4.Game.Coord;
 
 public class Cella {
 	
-	// Lista amely tartalmazza a szomszéd cellákat
-	public ArrayList<Cella> szomszedok;	
+	int i,j;
 
-	//A Cella osztály konstruktora
-	public Cella()
-	{
+	// Lista amely tartalmazza a szomszéd cellákat
+	public ArrayList<Cella> szomszedok;
+
+	// A Cella osztály konstruktora
+	public Cella() {
 		szomszedok = new ArrayList<Cella>();
 	}
 
-	//A Cella paraméteres konstruktora, amelynek a szomszédait kell átadni
-	public Cella(ArrayList<Cella> l){		
+	// A Cella paraméteres konstruktora, amelynek a szomszédait kell átadni
+	public Cella(ArrayList<Cella> l) {
 		szomszedok = l;
 	}
 
 	// Cellára tesz mezõrevaló elemet. Mezo osztályban felülírva!
-	public void ratesz(Mezorevalo elem) 
-	{
+	public void ratesz(Mezorevalo elem) {
 
 	}
 
-	//Cellára rátesz egy Útravaló elemet. Ut osztályban felülírva!
-	public void ratesz(Utravalo elem) 
-	{
+	// Cellára rátesz egy Útravaló elemet. Ut osztályban felülírva!
+	public void ratesz(Utravalo elem) {
 
 	}
 
 	// Cellról levesz egy mezõrevaló elemet. Mezo osztályban felülírva!
-	public void levesz(Mezorevalo elem) 
-	{
+	public void levesz(Mezorevalo elem) {
 
 	}
 
 	// Cellról levesz egy útravaló elemet. Ut osztályban felülírva!
-	public void levesz(Utravalo elem) 
-	{
+	public void levesz(Utravalo elem) {
 
 	}
 
-	//Visszaad egy Ellenséglistát azokról az ellenségekrõl akik az adott cellán(úton) vannak. Ut osztályban felülírva!
-	public ArrayList<Ellenseg> kivanrajtam() 
-	{
+	// Visszaad egy Ellenséglistát azokról az ellenségekrõl akik az adott
+	// cellán(úton) vannak. Ut osztályban felülírva!
+	public ArrayList<Ellenseg> kivanrajtam() {
 		return null;
 	}
 
-	//Visszaadja a szomszéd cellák listáját
-	public ArrayList<Cella> getSzomszedok() 
-	{
+	// Visszaadja a szomszéd cellák listáját
+	public ArrayList<Cella> getSzomszedok() {
 		return szomszedok;
 	}
 
-	//Igazzal tér vissza, ha mezõ, hamissal ha út. Leszármazott osztályokban felülírva.
-	public boolean mezovagyok() 
-	{
-		return false;		
+	// Igazzal tér vissza, ha mezõ, hamissal ha út. Leszármazott osztályokban
+	// felülírva.
+	public boolean mezovagyok() {
+		return false;
 	}
 
 
 
+	public Point getCoord() {
+		
+		return new Point(j, i);
+	}
+	
 }

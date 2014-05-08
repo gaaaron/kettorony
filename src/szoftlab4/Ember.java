@@ -1,11 +1,17 @@
 package szoftlab4;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+import view.EmberView;
+
 
 public class Ember extends Ellenseg {
-
+	
 	public Ember(Ut sajat) {
 		super(sajat);
 		elet = 100;
+		view = new EmberView(this);
 		ertek = 100;
 		count = 0;
 		sebesseg=3;
@@ -24,5 +30,8 @@ public class Ember extends Ellenseg {
 		}
 	}
 	
+	
+
+
 	
 }

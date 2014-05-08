@@ -16,4 +16,9 @@ public class AkadalyView implements BaseView {
 		
 	}
 
+	public void paint() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

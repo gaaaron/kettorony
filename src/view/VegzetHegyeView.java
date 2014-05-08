@@ -16,4 +16,10 @@ public class VegzetHegyeView implements BaseView {
 		
 	}
 
+	@Override
+	public void paint() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

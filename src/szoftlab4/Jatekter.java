@@ -40,11 +40,12 @@ public class Jatekter {
 			//Olvassa a fájlból a pálya sorait
 			for(int i=0;i<sizeI;i++){
 				line = br.readLine();
-				cellak.add(new ArrayList<Cella>());
+				cellak.add(new ArrayList<Cella>(sizeI));
 				for(int j=0;j<sizeJ;j++){
-					if (line.charAt(j) == 'M')		cellak.get(i).add(new Mezo());
+					if (line.charAt(j) == 'M')		
+						cellak.get(i).add(new Mezo(i,j));
 					else if (line.charAt(j) == 'U'){
-						Ut ut = new Ut();
+						Ut ut = new Ut(i,j);
 						cellak.get(i).add(ut);
 						
 						if( ( i == 0 || i==(sizeI-1) ) || ( j == 0 || j==(sizeJ-1) ) ) Application.game.ellensegkeszito.belepoUtak.add(ut);

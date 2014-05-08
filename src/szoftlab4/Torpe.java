@@ -1,5 +1,7 @@
 package szoftlab4;
 
+import view.TorpeView;
+
 
 //Egy speciális ellenségtípus
 public class Torpe extends Ellenseg {
@@ -11,6 +13,7 @@ public class Torpe extends Ellenseg {
 		ertek = 140;
 		count = 0;
 		sebesseg=3;
+		view = new TorpeView(this);
 	}
 	
 

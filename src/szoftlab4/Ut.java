@@ -1,6 +1,9 @@
 package szoftlab4;
 
+import java.awt.Point;
 import java.util.ArrayList;
+
+import view.UtView;
 
 public class Ut extends Cella{
 
@@ -10,17 +13,31 @@ public class Ut extends Cella{
 	//Az úton található akadály
 	public Akadaly akadaly;
 	
+	UtView view;
+
 
 	//Ut osztály paraméteres konstruktora
 	public Ut(ArrayList<Cella> l){
 		super(l);
 		rajtamvan = new ArrayList<Utravalo>();
+		view = new UtView(this);
+		//view.notifyChanged();
 	}
 	
 	//Ut osztály paraméter nélküli konstruktora
 	public Ut(){
 		super();
 		rajtamvan = new ArrayList<Utravalo>();
+		view = new UtView(this);
+		//view.notifyChanged();
+	}
+
+	public Ut(int i, int j) {
+		this.i = i;
+		this.j = j; 
+		rajtamvan = new ArrayList<Utravalo>();
+		view = new UtView(this);
+		//view.notifyChanged();
 	}
 
 	//Az útra teszi a megadott elemet
@@ -72,5 +89,11 @@ public class Ut extends Cella{
 		return temp;
 		} else return null;
 	}
+	
+	public UtView getView(){
+		return view;
+	}
 
+
+	
 }

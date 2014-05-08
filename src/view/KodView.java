@@ -15,6 +15,12 @@ public class KodView implements BaseView {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
+	public void paint() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

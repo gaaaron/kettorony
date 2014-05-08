@@ -2,7 +2,11 @@ package szoftlab4;
 
 import java.util.ArrayList;
 
+import view.MezoView;
+
 public class Mezo extends Cella {
+	
+	MezoView view;
 	
 	//Az adott mezõn lévõ elemeket tartalmazó lista
 	public ArrayList<Mezorevalo> rajtamvan;	
@@ -10,12 +14,22 @@ public class Mezo extends Cella {
 	//A Mezo osztály konstruktora, amely meghívja a cella konstruktorát is
 	public Mezo(){
 		super();	
+		view = new MezoView(this);
+		rajtamvan = new ArrayList<Mezorevalo>();
+	}
+	
+	public Mezo(int i, int j){
+		super();	
+		this.i = i;
+		this.j = j; 
+		view = new MezoView(this);
 		rajtamvan = new ArrayList<Mezorevalo>();
 	}
 	
 	//A mezõ osztály paraméteres konstruktora, ami incializálja a szomszédokat is
 	public Mezo(ArrayList<Cella> l){
 		super(l);
+		view = new MezoView(this);
 		rajtamvan = new ArrayList<Mezorevalo>();
 	}
 

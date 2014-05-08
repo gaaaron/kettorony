@@ -1,5 +1,7 @@
 package szoftlab4;
 
+import view.TundeView;
+
 
 //Egy speciális ellenségtípus
 public class Tunde extends Ellenseg{
@@ -11,6 +13,7 @@ public class Tunde extends Ellenseg{
 		ertek = 150;
 		count = 0;
 		sebesseg=3;
+		view = new TundeView(this);
 	}
 	
 	//Ha lövés éri az ellenséget, akkor a rá vonatkozó értékkel csökken az élete

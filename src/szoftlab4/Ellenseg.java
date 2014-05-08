@@ -3,6 +3,8 @@ package szoftlab4;
 import java.util.Random;
 import java.util.ArrayList;
 
+import view.BaseView;
+
 public class Ellenseg implements Utravalo, Aktiv {
 
  
@@ -19,7 +21,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 	public Ut sajatUt;
 
 	// Az elõzõ út, lépéskor használjuk
-	private Ut elozoUt;
+	protected Ut elozoUt;
 
 	// Tartalmazza az Ellenség életének értékét
 	// Leszármazott osztályokban felülírni!
@@ -30,6 +32,8 @@ public class Ellenseg implements Utravalo, Aktiv {
 	// Leszármazott osztályokban felülírni!
 	protected int ertek;
 
+	protected BaseView view;
+	
 	// Az Ellenség osztály konstruktora
 	// Leszármazott osztályban felülírni!
 	public Ellenseg(Ut sajat) {
@@ -102,12 +106,17 @@ public class Ellenseg implements Utravalo, Aktiv {
 
 			sajatUt.levesz(this);
 			kovetkezout.ratesz(this);
+			if(view != null )view.notifyChanged();
 		}
 	}
 
 	// A sajatUt attribútumot inicializálja
 	public void init(Ut sajat) {
 		sajatUt = sajat;
+	}
+	
+	public Ut getSajatUt(){
+		return sajatUt;
 	}
 
 }

@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import view.Window;
+
 /*
  *	Prototípus fõprogram
  */
@@ -175,9 +177,11 @@ public class Application {
 	}
 
 	public static boolean loadmap(String args[], Application.Message msg) {
+		Window w = new Window(game);
 		if(Application.game.jatekter.betolt(args[1], msg));
 		else return false;
 		msg.text = "Map loaded";
+		
 	
 		return true;
 	}
@@ -719,6 +723,11 @@ public class Application {
 	
 	public static void start(){
 		Application.game.controller.startTick();
+	}
+
+	public static ArrayList<ArrayList<Cella>> getMapCells() {
+		
+		return Application.game.jatekter.cellak;
 	}
 
 }

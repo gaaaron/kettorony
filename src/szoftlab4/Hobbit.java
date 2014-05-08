@@ -1,13 +1,19 @@
 package szoftlab4;
 
+import view.HobbitView;
+
 public class Hobbit extends Ellenseg {
 
+	HobbitView view;
+	
 	public Hobbit(Ut sajat) {
 		super(sajat);
 		elet = 150;
 		ertek = 110;
 		count = 0;
 		sebesseg=3;
+		view = new HobbitView(this);
+		
 	}
 	
 	//Paraméterként kap egy lövedéket, és a rá vonatkozó értékkel sebzi magát
