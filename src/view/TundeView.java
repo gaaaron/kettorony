@@ -16,10 +16,11 @@ public class TundeView implements BaseView {
 		Drawables.getInstance().add(this);
 	}
 
+	
 	@Override
 	public void notifyChanged() {
 		Drawables.getInstance().remove(this);
-		Drawables.getInstance().add(this);
+		if(tunde.getSajatUt() != null) Drawables.getInstance().add(this); //ha nincs sajátút, akkor csak törlünk (ellenség meghalt)
 	}
 
 	@Override

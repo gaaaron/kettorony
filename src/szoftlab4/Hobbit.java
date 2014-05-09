@@ -4,7 +4,6 @@ import view.HobbitView;
 
 public class Hobbit extends Ellenseg {
 
-	HobbitView view;
 	
 	public Hobbit(Ut sajat) {
 		super(sajat);

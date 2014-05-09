@@ -15,11 +15,11 @@ public class HobbitView implements BaseView {
 		hobbit = h;
 		Drawables.getInstance().add(this);
 	}
-
+	
 	@Override
 	public void notifyChanged() {
 		Drawables.getInstance().remove(this);
-		Drawables.getInstance().add(this);
+		if(hobbit.getSajatUt() != null) Drawables.getInstance().add(this); //ha nincs sajátút, akkor csak törlünk (ellenség meghalt)
 	}
 
 	@Override

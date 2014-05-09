@@ -71,6 +71,8 @@ public class Ellenseg implements Utravalo, Aktiv {
 		Application.game.ellenseglista.remove(this);
 		Application.game.controller.meghaltam(ertek);
 		Application.game.ellensegkeszito.meghalt.add(this);
+		sajatUt = null;
+		if(view != null ) view.notifyChanged();
 	}
 
 	// Amikor az Elenség lép, ez a függvény cseréli le az aktuális mezõt, amin
