@@ -50,10 +50,24 @@ public class Jatekos {
 	//Egy kiválasztott akadályt fejleszthetünk vele, ha van a birtokunkban Lila varázskõ
 	public void fejleszt(Akadaly akadaly, Lilavarazsko varazsko) {
 		akadaly.addko(varazsko);
+		varazskovek.remove(varazsko);
+		varazskoszam[2]-=1;
+		view.notifyChanged();
 	}
 	
 	public void fejleszt(Torony torony, Toronykovek toronyko) {
 		torony.addKo(toronyko);
+		varazskovek.remove(toronyko);
+		
+		if(toronyko instanceof Barnavarazsko) varazskoszam[0]-=1;
+		else if(toronyko instanceof Kekvarazsko) varazskoszam[1]-=1;
+		else if(toronyko instanceof Narancsvarazsko) varazskoszam[3]-=1;
+		else if(toronyko instanceof Pirosvarazsko) varazskoszam[4]-=1;
+		else if(toronyko instanceof Sargavarazsko) varazskoszam[5]-=1;
+		else if(toronyko instanceof Zoldvarazsko) varazskoszam[6]-=1;
+		
+		
+		view.notifyChanged();
 	}
 
 	//Egy új akadályt hozhatunk létre, ha van rá elég varázserõnk

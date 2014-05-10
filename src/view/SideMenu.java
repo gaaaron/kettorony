@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -22,6 +23,7 @@ public class SideMenu extends JPanel {
 	private Game game;
 	
 	public JLabel varazsero;
+	public static JComboBox combo;
 	
 	public JLabel zoldcount;
 	public JLabel kekcount;
@@ -30,6 +32,13 @@ public class SideMenu extends JPanel {
 	public JLabel narancscount;
 	public JLabel barnacount;
 	public JLabel lilacount;
+	
+	public static int whatwhat;
+	//0:semmi
+	//1:újakadály
+	//2:újtorony
+	//3:fejleszttorony
+	//4:fejlesztakadály
 	
 	
 	
@@ -41,6 +50,8 @@ public class SideMenu extends JPanel {
 		setBackground(Color.WHITE);
 		setAlignmentY(0.0f);
 		setAlignmentX(0.0f);
+		
+		whatwhat = 0;
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
@@ -55,6 +66,15 @@ public class SideMenu extends JPanel {
 		button.setFont(new Font("Arial", Font.BOLD, 11));
 		button.setBackground(new Color(204, 204, 204));
 		panel_1.add(button);
+		
+		button.addActionListener(new ActionListener() {
+       	 
+            public void actionPerformed(ActionEvent e)
+            {
+                //Execute when button is pressed
+               game.controller.startTick();
+            }
+        }); 
 		
 		JButton button_1 = new JButton("Kil\u00E9p\u00E9s");
 		button_1.setSize(new Dimension(95, 23));
@@ -77,7 +97,7 @@ public class SideMenu extends JPanel {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
 		panel_2.setAlignmentY(0.0f);
-		panel_2.setBounds(0, 71, 125, 279);
+		panel_2.setBounds(0, 71, 125, 400);
 		add(panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -232,13 +252,77 @@ public class SideMenu extends JPanel {
 		panel_2.add(button_8);
 		add(panel_1);
 		
+		JLabel ujpalyaelem = new JLabel("\u00DAj p\u00E1lyaelem");
+		label.setFont(new Font("Arial", Font.BOLD, 13));
+		panel_2.add(ujpalyaelem);
+		
+		
+		JButton button9 = new JButton("\u00DAj torony");
+		button9.setSize(new Dimension(95, 23));
+		button9.setPreferredSize(new Dimension(95, 23));
+		button9.setForeground(Color.BLACK);
+		button9.setFont(new Font("Arial", Font.BOLD, 11));
+		button9.setBackground(new Color(204, 204, 204));
+		
+        button9.addActionListener(new ActionListener() {
+         	 
+            public void actionPerformed(ActionEvent e)
+            {
+                whatwhat = 2;
+            }
+        });
+		
+		panel_2.add(button9);
+		
+
+		
+		JButton button10 = new JButton("\u00DAj akad\u00E1ly");
+		button10.setSize(new Dimension(95, 23));
+		button10.setPreferredSize(new Dimension(95, 23));
+		button10.setForeground(Color.BLACK);
+		button10.setFont(new Font("Arial", Font.BOLD, 11));
+		button10.setBackground(new Color(204, 204, 204));
+        button10.addActionListener(new ActionListener() {
+        	 
+            public void actionPerformed(ActionEvent e)
+            {
+                whatwhat = 1;
+            }
+        });
+		
+		panel_2.add(button10);
+		
+		JButton button11 = new JButton("Fejleszt\u00E9s");
+		button11.setSize(new Dimension(95, 23));
+		button11.setPreferredSize(new Dimension(95, 23));
+		button11.setForeground(Color.BLACK);
+		button11.setFont(new Font("Arial", Font.BOLD, 11));
+		button11.setBackground(new Color(204, 204, 204));
+		
+        button11.addActionListener(new ActionListener() {
+        	 
+            public void actionPerformed(ActionEvent e)
+            {
+            	if(combo.getSelectedIndex() == 2)
+            		whatwhat = 4;
+            	else whatwhat = 3;
+            	
+            }
+        });
+		
+		panel_2.add(button11);
+		
+		String[] ko = { "Barna", "K\u00E9k", "Lila", "Narancs", "Piros", "S\u00E1rga", "Z\u00F6ld"};
+		combo = new JComboBox(ko);
+		panel_2.add(combo);
+		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 60, 105, 2);
 		add(separator);
 		
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(0, 361, 125, 272);
+		panel_3.setBounds(0, 450, 125, 272);
 		panel_3.setAlignmentY(Component.TOP_ALIGNMENT);
 		panel_3.setBackground(Color.WHITE);
 		

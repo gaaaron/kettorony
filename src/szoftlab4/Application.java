@@ -17,6 +17,7 @@ public class Application {
 	public static TesztAblak ablak;
 	public static Message return_message;
 
+
 	/*
 	 * Prototípus konzolos felületének parancsai
 	 */
@@ -70,6 +71,19 @@ public class Application {
 		String line = null;
 		String[] parancs = null;
 		return_message = new Message();
+		
+		//Csak hogy ne kelljen állandóan beírni
+		String[] p = new String[2];
+		return_message.text = null;
+		p[0] = new String("loadmap");
+		p[1] = new String("map.txt");
+		loadmap(p, return_message);
+		
+		if(return_message.text != null) System.out.println(return_message.text);
+		printstate(return_message);
+		show(return_message);
+		//VÉGE
+		
 
 		try {
 
@@ -445,7 +459,6 @@ public class Application {
 			for(Torony a : game.toronylista){
 				if (a.id.equals(args[1])){
 					game.jatekter.felhasznalo.fejleszt(a, toronyko);
-					game.jatekter.felhasznalo.varazskovek.remove(iindex);
 					msg.text = "Varazsko hozzaadva";
 					megvan = true;
 					return true;
@@ -466,13 +479,17 @@ public class Application {
 
 	public static boolean addtrapgem(String args[], Application.Message msg) {
 		boolean megvan = false;
-		Lilavarazsko l = new Lilavarazsko();
-		if (game.jatekter.felhasznalo.varazskovek.contains(l)) {
+		Lilavarazsko l = null;
+		for(int i = 0;i<game.jatekter.felhasznalo.varazskovek.size();i++){
+			if(game.jatekter.felhasznalo.varazskovek.get(i) instanceof Lilavarazsko)
+				l = (Lilavarazsko)game.jatekter.felhasznalo.varazskovek.get(i);
+		}
+		
+		if (l!=null) {
 
 			for(Akadaly a : game.akadalylista){
 				if (a.id.equals(args[1])){
-					a.addko(l);
-					game.jatekter.felhasznalo.varazskovek.remove(l);
+					game.jatekter.felhasznalo.fejleszt(a, l);
 					msg.text = "Varazsko hozzaadva";
 					megvan = true;
 					return true;
