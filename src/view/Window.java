@@ -3,11 +3,13 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import szoftlab4.Application;
@@ -23,6 +25,7 @@ public class Window extends JPanel {
 	private Game game;
 	static Window window = null;
 	private JFrame frame = new JFrame("Két Torony");
+	private JLabel statusbar;
 	boolean voltmar = false;
 
 	public Window(final Game game) {
@@ -38,20 +41,25 @@ public class Window extends JPanel {
 		frame.add(SideMenu.sideMenu, BorderLayout.WEST);
 		
 		JPanel center = new JPanel();
-		window.setPreferredSize(new Dimension(800,650));
+		//window.setPreferredSize(new Dimension(800,650));
+		statusbar = new JLabel("<html><br/>Védd meg a Szarumán hatalmát a Gyûrû Szövetségének gonosz támadásaitól! ..És jól vigyázz! Egy apró hobbit is sokat sebezhet!</html>");
+		statusbar.setFont(new Font("Arial", Font.BOLD, 12));
+		
 		center.add(window, BorderLayout.CENTER);
+		center.add(statusbar, BorderLayout.SOUTH);
 		frame.add(center, BorderLayout.CENTER);
 		
 		// this.getGraphics().
 		frame.pack();
 		frame.setVisible(true);
-		frame.setPreferredSize(new Dimension(900, 650));
-		frame.setMinimumSize(new Dimension(900, 650));
+		frame.setPreferredSize(new Dimension(900, 670));
+		frame.setMinimumSize(new Dimension(900, 670));
 		
         addMouseListener(new MouseAdapter() {
 
             @Override
             public void mousePressed(MouseEvent e) {
+            	Application.return_message.text = null;
             	String[] t = null;
             	int y = e.getX()/70;
             	int x = e.getY()/70;
@@ -71,6 +79,7 @@ public class Window extends JPanel {
             		t[3] = new String(Integer.toString(y));
             		Application.addtrap(t, Application.return_message);
             		}
+            		else Application.return_message.text="Mezõre nem tehetsz akadályt";
             		break;
             	case 2:
               		t = new String[4];
@@ -81,6 +90,7 @@ public class Window extends JPanel {
             		t[3] = new String(Integer.toString(y));
             		Application.addtower(t, Application.return_message);
               		}
+              		else Application.return_message.text="Útra nem tehetsz tornyot";
             		break;
             	case 3:
           			Torony torony = null;
@@ -107,10 +117,11 @@ public class Window extends JPanel {
                 		case 4: t[2] = new String("piros");break;
                 		case 5: t[2] = new String("sarga");break;
                 		case 6: t[2] = new String("zold");break;
-                		default: System.out.println("ERROR");
+                		default: Application.return_message.text = "ERROR";
                 		}
                 		Application.addtowergem(t, Application.return_message);
               		}
+              		else Application.return_message.text = "Ide nem tehetsz toronykövet";
             		
             		break;
             	case 4: 
@@ -123,10 +134,11 @@ public class Window extends JPanel {
             		Application.addtrapgem(t, Application.return_message);
               		}
               		}
+              		else Application.return_message.text = "Ide nem tehetsz akadálykövet";
             		
             		break;
             	}
-            	
+            	if(Application.return_message.text != null) statusbar.setText("<html><br/>"+Application.return_message.text+"</html>");
                 repaint();
             }
 

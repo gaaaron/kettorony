@@ -196,7 +196,7 @@ public class Application {
 		if(Application.game.jatekter.betolt(args[1], msg));
 		else return false;
 		w.setPreferredSize(new Dimension(game.jatekter.width*70,game.jatekter.height*70));
-		w.repaint();
+		w.revalidate();
 		msg.text = "Map loaded";
 		
 	
@@ -305,7 +305,7 @@ public class Application {
 
 	public static boolean buygem(String args[], Application.Message msg) {	
 		if(game.jatekter.felhasznalo.varazsero < 30){
-			msg.text = "Nincs eleg varazsero";
+			msg.text = "Nincs elég varázserõ";
 			return false;
 		}
 		
@@ -342,7 +342,7 @@ public class Application {
 			return false;
 		}
 
-		msg.text = "Varazsko megvasarolva";
+		msg.text = "Varázskõ megvásárolva";
 		return true;
 	}
 
@@ -459,7 +459,7 @@ public class Application {
 			for(Torony a : game.toronylista){
 				if (a.id.equals(args[1])){
 					game.jatekter.felhasznalo.fejleszt(a, toronyko);
-					msg.text = "Varazsko hozzaadva";
+					msg.text = "Varázskõ hozzáadva";
 					megvan = true;
 					return true;
 				}
@@ -471,7 +471,7 @@ public class Application {
 			}
 			return true;
 		} else {
-			msg.text = "Nem letezo varazsko";
+			msg.text = "Nem létezõ varázskõ";
 			return false;
 		}
 
@@ -502,7 +502,7 @@ public class Application {
 			}
 			return true;
 		} else {
-			msg.text = "Nem letezo varazsko";
+			msg.text = "Nem létezõ varázskõ";
 			return false;
 		}
 	}

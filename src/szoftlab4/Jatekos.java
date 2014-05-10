@@ -77,10 +77,10 @@ public class Jatekos {
 			valasztottUt.akadaly = ezt;
 			ezt.init(valasztottUt);
 			varazserotVeszit(20);
-			msg.text = "Akadaly letrehozva";
+			msg.text = "Akadály létrehozva";
 			return true;
 		}else{
-			msg.text = "Nincs eleg varazsero";
+			msg.text = "Nincs elég varázserõ";
 			return false;
 		}
 		
@@ -93,10 +93,10 @@ public class Jatekos {
 			valasztottMezo.ratesz(ezt);
 			varazserotVeszit(10);
 			ezt.init(valasztottMezo);
-			msg.text = "Torony letrehozva";
+			msg.text = "Torony létrehozva";
 			return true;
 		}else{
-			msg.text = "Nincs eleg varazsero";
+			msg.text = "Nincs elég varázserõ";
 			return false;
 		}
 	}
