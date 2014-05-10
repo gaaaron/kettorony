@@ -53,7 +53,7 @@ public class Torony implements Aktiv, Mezorevalo {
 			kod.tick();
 		if (kod == null) {
 			Random randomGenerator = new Random();
-			int index = randomGenerator.nextInt(49);
+			int index = randomGenerator.nextInt(99);
 
 			if (index == 1) {
 				kod = new Kod(this);
@@ -173,6 +173,7 @@ public class Torony implements Aktiv, Mezorevalo {
 	// Beködösíti a tornyot ha leszáll a köd.
 	public void kodosit() {
 		kodos = true;
+		kod = new Kod(this);
 	}
 
 	// Leveszi a ködöt, ha letelt az adott idõtartam;

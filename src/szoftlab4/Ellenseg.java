@@ -7,7 +7,6 @@ import view.BaseView;
 
 public class Ellenseg implements Utravalo, Aktiv {
 
- 
 	public String id;
 
 	public int count;
@@ -33,7 +32,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 	protected int ertek;
 
 	protected BaseView view;
-	
+
 	// Az Ellenség osztály konstruktora
 	// Leszármazott osztályban felülírni!
 	public Ellenseg(Ut sajat) {
@@ -46,10 +45,12 @@ public class Ellenseg implements Utravalo, Aktiv {
 	// Ha tick történik a rendszerben, ez a függvény hívódik meg
 	// Tick hatására, az ellenség bizonyos valószínûséggel lépni fog.
 	public void tick() {
-
+		ArrayList<Ut> lehetsegesutak = null;
 		if (count == sebesseg) {
-			ArrayList<Ut> lehetsegesutak = sajatUt.lepnek();
-			if(lehetsegesutak != null)
+			if (sajatUt != null) {
+				lehetsegesutak = sajatUt.lepnek();
+			}
+			if (lehetsegesutak != null)
 				lepek(lehetsegesutak);
 			count = 0;
 		} else
@@ -72,7 +73,8 @@ public class Ellenseg implements Utravalo, Aktiv {
 		Application.game.controller.meghaltam(ertek);
 		Application.game.ellensegkeszito.meghalt.add(this);
 		sajatUt = null;
-		if(view != null ) view.notifyChanged();
+		if (view != null)
+			view.notifyChanged();
 	}
 
 	// Amikor az Elenség lép, ez a függvény cseréli le az aktuális mezõt, amin
@@ -108,7 +110,8 @@ public class Ellenseg implements Utravalo, Aktiv {
 
 			sajatUt.levesz(this);
 			kovetkezout.ratesz(this);
-			if(view != null )view.notifyChanged();
+			if (view != null)
+				view.notifyChanged();
 		}
 	}
 
@@ -116,8 +119,8 @@ public class Ellenseg implements Utravalo, Aktiv {
 	public void init(Ut sajat) {
 		sajatUt = sajat;
 	}
-	
-	public Ut getSajatUt(){
+
+	public Ut getSajatUt() {
 		return sajatUt;
 	}
 
