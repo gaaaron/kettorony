@@ -64,8 +64,7 @@ public class Window extends JPanel {
 				//Drawables.getInstance().remove(i);
 			}
 			
-			System.out.println(Drawables.getInstance().getSize());
-		// System.out.println(Drawables.getInstance().getSize());
+			
 		voltmar = true;
 	}
 	

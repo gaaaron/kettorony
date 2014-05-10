@@ -351,6 +351,7 @@ public class Application {
 			if (valasztott.mezovagyok()){
 				if(game.jatekter.felhasznalo.ujTorony((Mezo) valasztott, uj,msg)){
 					game.toronylista.add(uj);
+					uj.init((Mezo) valasztott);
 					game.controller.aktiv.add(uj);
 					return true;
 				}
@@ -645,6 +646,7 @@ public class Application {
 			if (!valasztott.mezovagyok()){
 				if(game.jatekter.felhasznalo.ujAkadaly((Ut) valasztott, uj,msg)){
 					game.akadalylista.add(uj);
+					uj.init((Ut)valasztott);
 					return true;
 				}
 				else{

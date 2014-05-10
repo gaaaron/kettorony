@@ -38,7 +38,7 @@ public class Mezo extends Cella {
 	{
 		rajtamvan.add(elem);
 		elem.init(this);
-		view.notifyChanged();
+		
 	}
 
 	//Celláról levesz egy mezõrevaló elemet

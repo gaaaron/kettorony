@@ -1,5 +1,10 @@
 package view;
 
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 import szoftlab4.VegzetHegye;
 
 public class VegzetHegyeView implements BaseView {
@@ -8,18 +13,23 @@ public class VegzetHegyeView implements BaseView {
 	
 	public VegzetHegyeView(VegzetHegye vH){
 		vegzetHegye = vH;
+		notifyChanged();
 	}
 	
 	@Override
 	public void notifyChanged() {
-		// TODO Auto-generated method stub
+		Drawables.getInstance().remove(this);
+		Drawables.getInstance().add(this);
 		
 	}
 
 	@Override
 	public void paint() {
-		// TODO Auto-generated method stub
-		
+		int x = vegzetHegye.getSajatUt().getCoord().x;
+		int y = vegzetHegye.getSajatUt().getCoord().y;
+		Image image = new ImageIcon("img/hegy.png").getImage();
+		Graphics g = Drawables.getInstance().getGraphics();
+		g.drawImage(image, x*70, y*70, null);
 	}
 
 }

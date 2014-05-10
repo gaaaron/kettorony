@@ -2,6 +2,8 @@ package szoftlab4;
 
 import java.util.ArrayList;
 
+import view.VegzetHegyeView;
+
 public class VegzetHegye implements Utravalo, Aktiv{
 	
 	//Ez tárolja hogy melyik cellán van az objektum
@@ -9,15 +11,19 @@ public class VegzetHegye implements Utravalo, Aktiv{
 	
 	//A VegzetHegye életét tartalmazza
 	public int elet;
+	
+	private VegzetHegyeView view;
 		
 	//Konstruktor, ami inicializálja az objektumot.
 	public VegzetHegye(){
 		sajatUt = null;
 		elet = 100;
+		view = new VegzetHegyeView(this); 
 	}
 	public VegzetHegye(Cella sj){
 		sajatUt = (Ut)sj;
 		elet = 300;
+		view = new VegzetHegyeView(this);
 	}
 	
 	//A torony életét lecsökkkenti a paraméterben kapott mennyiséggel
@@ -52,5 +58,8 @@ public class VegzetHegye implements Utravalo, Aktiv{
 			e.tamad(this);
 		}
 		
+	}
+	public Ut getSajatUt() {
+		return sajatUt;
 	}
 }

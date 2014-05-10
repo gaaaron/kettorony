@@ -1,5 +1,7 @@
 package szoftlab4;
 
+import view.AkadalyView;
+
 
 public class Akadaly implements Utravalo {
 	
@@ -16,12 +18,15 @@ public class Akadaly implements Utravalo {
 	
 	private int counter;
 	
+	private AkadalyView view;
+	
 	//Az Akadály osztály publikus konstruktora
 	public Akadaly(){
 		sajatUt = null;
 		counter = 0;
 		lassitas = 1;
 		ko = null;
+		view = new AkadalyView(this);
 	}
 	
 	public Akadaly(String iduj){
@@ -30,6 +35,7 @@ public class Akadaly implements Utravalo {
 		lassitas = 1;
 		ko = null;
 		id= iduj;
+		view = new AkadalyView(this);
 	}
 	
 	//Függvény ami visszaadja, hogy az adott körben léphet-e az Ellenség
@@ -67,6 +73,11 @@ public class Akadaly implements Utravalo {
 	//Lilavarázskövet hozzáadja az akadályhoz. A fejlesztés során hívódik meg
 	public void addko(Lilavarazsko varazsko){
 		ko = varazsko;
+	}
+
+	public Ut getSajatUt() {
+		
+		return sajatUt;
 	}
 	
 

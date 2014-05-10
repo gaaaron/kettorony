@@ -5,14 +5,14 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import szoftlab4.Akadaly;
+import szoftlab4.Torony;
 
-public class AkadalyView implements BaseView {
-
-	private Akadaly akadaly;
+public class ToronyView implements BaseView {
 	
-	public AkadalyView(Akadaly a) {
-		akadaly = a;
+	private Torony torony;
+	
+	public ToronyView(Torony t) {
+		torony = t;
 		notifyChanged();
 	}
 	
@@ -24,9 +24,9 @@ public class AkadalyView implements BaseView {
 	}
 
 	public void paint() {
-		int x = akadaly.getSajatUt().getCoord().x;
-		int y = akadaly.getSajatUt().getCoord().y;
-		Image image = new ImageIcon("img/akadaly.png").getImage();
+		int x = torony.getSajatMezo().getCoord().x;
+		int y = torony.getSajatMezo().getCoord().y;
+		Image image = new ImageIcon("img/torony.png").getImage();
 		Graphics g = Drawables.getInstance().getGraphics();
 		g.drawImage(image, x*70, y*70, null);
 	}

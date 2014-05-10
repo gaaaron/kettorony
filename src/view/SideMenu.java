@@ -72,7 +72,7 @@ public class SideMenu extends JPanel {
 		JLabel label = new JLabel("K\u0151 v\u00E1s\u00E1rl\u00E1s");
 		label.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_2.add(label);
-		
+
 		JLabel label_1 = new JLabel("Toronyk\u00F6vek");
 		label_1.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_2.add(label_1);
