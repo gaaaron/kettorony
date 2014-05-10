@@ -14,7 +14,7 @@ import view.Window;
 public class Application {
 
 	public static Game game = new Game();
-	public static TesztAblak ablak;
+	//public static TesztAblak ablak;
 	public static Message return_message;
 
 
@@ -79,9 +79,9 @@ public class Application {
 		p[1] = new String("map.txt");
 		loadmap(p, return_message);
 		
-		if(return_message.text != null) System.out.println(return_message.text);
-		printstate(return_message);
-		show(return_message);
+		//if(return_message.text != null) System.out.println(return_message.text);
+		//printstate(return_message);
+		//show(return_message);
 		//VÉGE
 		
 
@@ -359,10 +359,14 @@ public class Application {
 		}
 
 		if (joid) {
-			Torony uj = new Torony(args[1]);
 			
 			Cella valasztott = game.jatekter.cellak.get(sor).get(oszlop);
 			if (valasztott.mezovagyok()){
+				if(((Mezo) valasztott).rajtamvan.size()!=0){
+					msg.text= "Már van torony ezen a mezõn";
+					return false;
+				}
+				Torony uj = new Torony(args[1]);
 				if(game.jatekter.felhasznalo.ujTorony((Mezo) valasztott, uj,msg)){
 					game.toronylista.add(uj);
 					uj.init((Mezo) valasztott);
@@ -658,9 +662,18 @@ public class Application {
 		}
 
 		if (joid) {
-			Akadaly uj = new Akadaly(args[1]);
 			Cella valasztott = game.jatekter.cellak.get(sor).get(oszlop);
 			if (!valasztott.mezovagyok()){
+				if(((Ut) valasztott).akadaly != null){
+					msg.text = "Már van akadály ezen az úton";
+					return false;
+				}
+				if(((Ut) valasztott) == game.hegy.getSajatUt()){
+					msg.text = "A Végzet Hegyére nem tehetsz akadályt";
+					return false;
+				}
+				
+				Akadaly uj = new Akadaly(args[1]);
 				if(game.jatekter.felhasznalo.ujAkadaly((Ut) valasztott, uj,msg)){
 					game.akadalylista.add(uj);
 					uj.init((Ut)valasztott);
@@ -688,12 +701,12 @@ public class Application {
 	}
 	
 	public static void show(Application.Message message){
-		if(ablak == null){
+		/*if(ablak == null){
 		ablak = new TesztAblak();
 		ablak.setVisible(true);
 		ablak.isVisible=true;
 		}
-		showData(message);
+		showData(message);*/
 		
 	}
 	
@@ -737,8 +750,8 @@ public class Application {
 			szoveg += "\n";
 		}
 		
-		ablak.palya.setText(szoveg);
-		ablak.status.setText(msg.text);
+		/*ablak.palya.setText(szoveg);
+		ablak.status.setText(msg.text);*/
 		
 		
 	}
