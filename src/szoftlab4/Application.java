@@ -1,5 +1,6 @@
 package szoftlab4;
 
+import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -180,6 +181,8 @@ public class Application {
 		Window w = new Window(game);
 		if(Application.game.jatekter.betolt(args[1], msg));
 		else return false;
+		w.setPreferredSize(new Dimension(game.jatekter.width*70,game.jatekter.height*70));
+		w.repaint();
 		msg.text = "Map loaded";
 		
 	

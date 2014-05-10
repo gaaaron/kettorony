@@ -9,6 +9,8 @@ public class Jatekter {
 
 	//A játéktér celláit tartalmazza
 	public ArrayList<ArrayList<Cella>> cellak;
+	public int width;
+	public int height;
 	
 	//Az aktuális játékost tartalmazza
 	public Jatekos felhasznalo;
@@ -86,6 +88,8 @@ public class Jatekter {
 					if(j< (cellak.get(i).size()-1))	cellak.get(i).get(j).szomszedok.add(cellak.get(i).get(j+1));
 				}
 			}
+			height = cellak.size();
+			width = cellak.get(0).size();
 			return true;
 
 		} catch (IOException e) {

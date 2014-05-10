@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -21,14 +22,24 @@ public class Window extends JPanel {
 		window = this;
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout(0, 0));
 		this.game = game;
 
 		Drawables.getInstance().setGraphics(getGraphics());
+		
+		SideMenu.sideMenu = new SideMenu();
+		frame.add(SideMenu.sideMenu, BorderLayout.WEST);
+		
+		JPanel center = new JPanel();
+		window.setPreferredSize(new Dimension(800,600));
+		center.add(window, BorderLayout.CENTER);
+		frame.add(center, BorderLayout.CENTER);
+		
 		// this.getGraphics().
-		frame.add(this);
 		frame.pack();
 		frame.setVisible(true);
-		frame.setMinimumSize(new Dimension(800, 600));
+		frame.setPreferredSize(new Dimension(900, 650));
+		frame.setMinimumSize(new Dimension(900, 650));
 	}
 
 	public static Graphics getCustomGraphics() {
@@ -57,5 +68,6 @@ public class Window extends JPanel {
 		// System.out.println(Drawables.getInstance().getSize());
 		voltmar = true;
 	}
-
+	
+	
 }
