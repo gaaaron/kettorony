@@ -12,13 +12,16 @@ public class JatekosView implements BaseView {
 	
 	@Override
 	public void notifyChanged() {
-		// TODO Auto-generated method stub
-		
+		Drawables.getInstance().remove(this);
+		Drawables.getInstance().add(this);	
 	}
 
 	public void paint() {
-		// TODO Auto-generated method stub
-		
+		//TODO: köveket is jelezzük ki..
+		if(SideMenu.sideMenu != null){
+			SideMenu.sideMenu.varazsero.setText(String.format("%4d", jatekos.varazsero));
+			SideMenu.sideMenu.repaint();
+		}
 	}
 
 }

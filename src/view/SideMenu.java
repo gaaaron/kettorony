@@ -13,8 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
+import szoftlab4.Game;
+
 public class SideMenu extends JPanel {
-	static JPanel sideMenu = null;
+	static SideMenu sideMenu = null;
+	private Game game;
 	
 	public JLabel varazsero;
 	
@@ -28,7 +31,9 @@ public class SideMenu extends JPanel {
 	
 	
 	
-	public SideMenu(){		
+	public SideMenu(Game game){	
+		this.game =game;
+		sideMenu=this;
 		setLayout(null);
 		setPreferredSize(new Dimension(130, 23));
 		setBackground(Color.WHITE);
@@ -174,7 +179,7 @@ public class SideMenu extends JPanel {
 		lblVarzser.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lblVarzser);
 		
-		varazsero = new JLabel("500");
+		varazsero = new JLabel(String.format("%4d", game.jatekter.felhasznalo.varazsero));
 		varazsero.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(varazsero);
 		

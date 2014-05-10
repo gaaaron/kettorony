@@ -2,8 +2,11 @@ package szoftlab4;
 
 import java.util.ArrayList;
 
+import view.JatekosView;
+
 public class Jatekos {
 	
+	JatekosView view;
 	//Tárolja a játékos varázserejét
 	public int varazsero = 0;
 	
@@ -12,6 +15,7 @@ public class Jatekos {
 
 	//A Jatekos osztály konstruktora
 	public Jatekos() {
+		view = new JatekosView(this);
 		varazskovek = new ArrayList<Varazsko>();
 		varazsero = 0;
 	}
@@ -29,14 +33,14 @@ public class Jatekos {
 	public void varazserotKap(int i) {
 
 		varazsero += i;
-
+		view.notifyChanged();
 	}
 
 	//A játékos varázserejét csökkenti
 	public void varazserotVeszit(int i) {
 
 		varazsero -= i;
-
+		view.notifyChanged();
 	}
 
 	//Egy kiválasztott akadályt fejleszthetünk vele, ha van a birtokunkban Lila varázskõ

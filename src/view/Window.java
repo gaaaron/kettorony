@@ -27,7 +27,7 @@ public class Window extends JPanel {
 
 		Drawables.getInstance().setGraphics(getGraphics());
 		
-		SideMenu.sideMenu = new SideMenu();
+		SideMenu.sideMenu = new SideMenu(game);
 		frame.add(SideMenu.sideMenu, BorderLayout.WEST);
 		
 		JPanel center = new JPanel();
