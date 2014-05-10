@@ -12,12 +12,16 @@ public class Jatekos {
 	
 	//A játékos birtokában léõv varázsköveket tartalmazza
 	public ArrayList<Varazsko> varazskovek;
+	
+	//A játékos birtokában léõvõ varázskövek száma
+	public int[] varazskoszam;
 
 	//A Jatekos osztály konstruktora
 	public Jatekos() {
 		view = new JatekosView(this);
 		varazskovek = new ArrayList<Varazsko>();
 		varazsero = 0;
+		varazskoszam = new int[7];
 	}
 
 	//Vásáról egy követ, hogyha a játékosnak van rá elég varázsereje
@@ -84,6 +88,58 @@ public class Jatekos {
 	}
 
 	public void kovetVesz(String koTipus) {
+		
+		if(varazsero < 30){
+			return;
+		}
+		
+		if (koTipus.matches("barna")){
+			varazskovek.add(new Barnavarazsko());
+			varazskoszam[0]+=1;
+			view.notifyChanged();
+			varazserotVeszit(30);
+		}
+		else if (koTipus.matches("kek")){
+			varazskovek.add(new Kekvarazsko());
+			varazskoszam[1]+=1;
+			view.notifyChanged();
+			varazserotVeszit(30);
+		}
+		else if (koTipus.matches("lila")){
+			varazskovek.add(new Lilavarazsko());
+			varazskoszam[2]+=1;
+			view.notifyChanged();
+			varazserotVeszit(30);
+		}
+		else if (koTipus.matches("narancs")){
+			varazskovek.add(new Narancsvarazsko());
+			varazskoszam[3]+=1;
+			view.notifyChanged();
+			varazserotVeszit(30);
+		}
+		else if (koTipus.matches("piros")){
+			varazskovek.add(new Pirosvarazsko());
+			varazskoszam[4]+=1;
+			view.notifyChanged();
+			varazserotVeszit(30);
+		}
+		else if (koTipus.matches("sarga")){
+			varazskovek.add(new Sargavarazsko());
+			varazskoszam[5]+=1;
+			view.notifyChanged();
+			varazserotVeszit(30);
+		}
+		else if (koTipus.matches("zold")){
+			varazskovek.add(new Zoldvarazsko());
+			varazskoszam[6]+=1;
+			view.notifyChanged();
+			varazserotVeszit(30);
+		}
+		else{
+			return;
+		}
+
+		return;
 
 	}
 }

@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,7 +33,7 @@ public class SideMenu extends JPanel {
 	
 	
 	
-	public SideMenu(Game game){	
+	public SideMenu(final Game game){	
 		this.game =game;
 		sideMenu=this;
 		setLayout(null);
@@ -60,6 +62,16 @@ public class SideMenu extends JPanel {
 		button_1.setForeground(Color.BLACK);
 		button_1.setFont(new Font("Arial", Font.BOLD, 11));
 		button_1.setBackground(new Color(204, 204, 204));
+		
+        button_1.addActionListener(new ActionListener() {
+        	 
+            public void actionPerformed(ActionEvent e)
+            {
+                //Execute when button is pressed
+               System.exit(0);
+            }
+        }); 
+		
 		panel_1.add(button_1);
 		
 		JPanel panel_2 = new JPanel();
@@ -86,6 +98,15 @@ public class SideMenu extends JPanel {
 		button_2.setForeground(Color.BLACK);
 		button_2.setFont(new Font("Arial", Font.PLAIN, 10));
 		button_2.setBackground(new Color(204, 204, 204));
+		
+        button_2.addActionListener(new ActionListener() {
+        	 
+            public void actionPerformed(ActionEvent e)
+            {
+                game.jatekter.felhasznalo.kovetVesz("zold");
+            }
+        }); 
+		
 		panel_2.add(button_2);
 		
 		JButton button_3 = new JButton("k\u00E9k");
@@ -97,6 +118,14 @@ public class SideMenu extends JPanel {
 		button_3.setForeground(Color.BLACK);
 		button_3.setFont(new Font("Arial", Font.PLAIN, 10));
 		button_3.setBackground(new Color(204, 204, 204));
+		
+        button_3.addActionListener(new ActionListener() {
+       	 
+            public void actionPerformed(ActionEvent e)
+            {
+                game.jatekter.felhasznalo.kovetVesz("kek");
+            }
+        });
 		panel_2.add(button_3);
 		
 		JButton button_4 = new JButton("s\u00E1rga");
@@ -108,6 +137,15 @@ public class SideMenu extends JPanel {
 		button_4.setForeground(Color.BLACK);
 		button_4.setFont(new Font("Arial", Font.PLAIN, 10));
 		button_4.setBackground(new Color(204, 204, 204));
+		
+        button_4.addActionListener(new ActionListener() {
+       	 
+            public void actionPerformed(ActionEvent e)
+            {
+                game.jatekter.felhasznalo.kovetVesz("sarga");
+            }
+        });
+		
 		panel_2.add(button_4);
 		
 		JButton button_5 = new JButton("piros");
@@ -119,6 +157,14 @@ public class SideMenu extends JPanel {
 		button_5.setForeground(Color.BLACK);
 		button_5.setFont(new Font("Arial", Font.PLAIN, 10));
 		button_5.setBackground(new Color(204, 204, 204));
+        button_5.addActionListener(new ActionListener() {
+       	 
+            public void actionPerformed(ActionEvent e)
+            {
+                game.jatekter.felhasznalo.kovetVesz("piros");
+            }
+        });
+		
 		panel_2.add(button_5);
 		
 		JButton button_6 = new JButton("narancs");
@@ -130,6 +176,15 @@ public class SideMenu extends JPanel {
 		button_6.setForeground(Color.BLACK);
 		button_6.setFont(new Font("Arial", Font.PLAIN, 10));
 		button_6.setBackground(new Color(204, 204, 204));
+		
+        button_6.addActionListener(new ActionListener() {
+       	 
+            public void actionPerformed(ActionEvent e)
+            {
+                game.jatekter.felhasznalo.kovetVesz("narancs");
+            }
+        });
+		
 		panel_2.add(button_6);
 		
 		JButton button_7 = new JButton("barna");
@@ -141,6 +196,15 @@ public class SideMenu extends JPanel {
 		button_7.setForeground(Color.BLACK);
 		button_7.setFont(new Font("Arial", Font.PLAIN, 10));
 		button_7.setBackground(new Color(204, 204, 204));
+		
+        button_7.addActionListener(new ActionListener() {
+       	 
+            public void actionPerformed(ActionEvent e)
+            {
+                game.jatekter.felhasznalo.kovetVesz("barna");
+            }
+        });
+		
 		panel_2.add(button_7);
 		
 		JLabel label_2 = new JLabel("Akad\u00E1lyk\u0151");
@@ -156,6 +220,15 @@ public class SideMenu extends JPanel {
 		button_8.setForeground(Color.BLACK);
 		button_8.setFont(new Font("Arial", Font.PLAIN, 10));
 		button_8.setBackground(new Color(204, 204, 204));
+		
+        button_8.addActionListener(new ActionListener() {
+       	 
+            public void actionPerformed(ActionEvent e)
+            {
+                game.jatekter.felhasznalo.kovetVesz("lila");
+            }
+        });
+		
 		panel_2.add(button_8);
 		add(panel_1);
 		
@@ -187,7 +260,7 @@ public class SideMenu extends JPanel {
 		lblZldVarzsk.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lblZldVarzsk);
 		
-		zoldcount = new JLabel("  1");
+		zoldcount = new JLabel(String.format("%4d", game.jatekter.felhasznalo.varazskoszam[6]));
 		zoldcount.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(zoldcount);
 		
@@ -195,7 +268,7 @@ public class SideMenu extends JPanel {
 		lblKkVarzsk.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lblKkVarzsk);
 		
-		kekcount = new JLabel("  1");
+		kekcount = new JLabel(String.format("%4d", game.jatekter.felhasznalo.varazskoszam[1]));
 		kekcount.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(kekcount);
 		
@@ -203,7 +276,7 @@ public class SideMenu extends JPanel {
 		lblSrgaVarzsk.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lblSrgaVarzsk);
 		
-		sargacount = new JLabel("  1");
+		sargacount = new JLabel(String.format("%4d", game.jatekter.felhasznalo.varazskoszam[5]));
 		sargacount.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(sargacount);
 		
@@ -211,7 +284,7 @@ public class SideMenu extends JPanel {
 		lblPirosVarzsk.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lblPirosVarzsk);
 		
-		piroscount = new JLabel("  1");
+		piroscount = new JLabel(String.format("%4d", game.jatekter.felhasznalo.varazskoszam[4]));
 		piroscount.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(piroscount);
 		
@@ -219,7 +292,7 @@ public class SideMenu extends JPanel {
 		lblNarancsVarzsk.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lblNarancsVarzsk);
 		
-		narancscount = new JLabel("  1");
+		narancscount = new JLabel(String.format("%4d", game.jatekter.felhasznalo.varazskoszam[3]));
 		narancscount.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(narancscount);
 		
@@ -227,7 +300,7 @@ public class SideMenu extends JPanel {
 		lblBarnaVarzsk.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lblBarnaVarzsk);
 		
-		barnacount = new JLabel("  1");
+		barnacount = new JLabel(String.format("%4d", game.jatekter.felhasznalo.varazskoszam[0]));
 		barnacount.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(barnacount);
 		
@@ -235,7 +308,7 @@ public class SideMenu extends JPanel {
 		lblLilaVarzsk.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lblLilaVarzsk);
 		
-		lilacount = new JLabel("  1");
+		lilacount = new JLabel(String.format("%4d", game.jatekter.felhasznalo.varazskoszam[2]));
 		lilacount.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lilacount);
 		
