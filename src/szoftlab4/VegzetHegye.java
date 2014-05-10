@@ -24,7 +24,7 @@ public class VegzetHegye implements Utravalo, Aktiv{
 	//Amennyiben a torony élete negatív tartományba esik, meghívja a meghal() függvényt.
 	public void sebez(int egyseg){
 			elet = elet-egyseg;
-			if(elet<0)
+			if(elet<=0)
 				meghal();
 	}
 			

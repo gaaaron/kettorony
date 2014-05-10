@@ -70,6 +70,7 @@ public class Jatekos {
 		if(varazsero>=10){
 			valasztottMezo.ratesz(ezt);
 			varazserotVeszit(10);
+			ezt.init(valasztottMezo);
 			msg.text = "Torony letrehozva";
 			return true;
 		}else{

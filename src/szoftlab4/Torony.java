@@ -25,7 +25,7 @@ public class Torony implements Aktiv, Mezorevalo {
 			sebzes=1;
 			counter = 0;
 			kovek = new ArrayList<Toronykovek>();
-			sajatMezo = new Mezo();
+			//sajatMezo = new Mezo();
 			kodos = false;
 		}
 		
@@ -37,7 +37,7 @@ public class Torony implements Aktiv, Mezorevalo {
 					sebzes=1;
 					counter = 0;
 					kovek = new ArrayList<Toronykovek>();
-					sajatMezo = new Mezo();
+					//sajatMezo = new Mezo();
 					kodos = false;
 				}
 //Ha történik a rendszerben egy tick(), ez a metódus hívódik meg
