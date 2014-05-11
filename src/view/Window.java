@@ -9,9 +9,11 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import szoftlab4.Application;
 import szoftlab4.Cella;
@@ -40,6 +42,8 @@ public class Window extends JPanel {
 		this.game = game;
 
 		Drawables.getInstance().setGraphics(getGraphics());
+		
+
 
 //A bal oldalon található Menut példányosítjuk, ahol a felhasználó például köveket tud vásárolni, vagy új tornyot építeni
 		SideMenu.sideMenu = new SideMenu(game);

@@ -6,6 +6,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import javax.swing.JFileChooser;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import view.Window;
 
 /*
@@ -72,11 +77,33 @@ public class Application {
 		String[] parancs = null;
 		return_message = new Message();
 		
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (InstantiationException e1) {
+			e1.printStackTrace();
+		} catch (IllegalAccessException e1) {
+			e1.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e1) {
+			e1.printStackTrace();
+		}
+		String paly = null;
+	    JFileChooser chooser = new JFileChooser(new java.io.File( "." ).getCanonicalPath());
+	    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+	        "TXT térkép fájlok", "txt");
+	    chooser.setFileFilter(filter);
+	    int returnVal = chooser.showOpenDialog(null);
+	    if(returnVal == JFileChooser.APPROVE_OPTION) {
+	            paly = chooser.getSelectedFile().getName();
+	    }
+		
 		//Csak hogy ne kelljen állandóan beírni
 		String[] p = new String[2];
 		return_message.text = null;
 		p[0] = new String("loadmap");
-		p[1] = new String("map.txt");
+		if(paly == null) p[1] = new String("map.txt");
+		else p[1] = paly;
 		loadmap(p, return_message);
 		
 		//if(return_message.text != null) System.out.println(return_message.text);
