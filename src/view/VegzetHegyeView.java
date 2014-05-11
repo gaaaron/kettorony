@@ -11,23 +11,25 @@ import javax.swing.ImageIcon;
 
 import szoftlab4.VegzetHegye;
 
+//Osztály, ami a Végzet hegyének kirajzolásáért felelõs
 public class VegzetHegyeView implements BaseView {
 
 	VegzetHegye vegzetHegye;
 	
+//Az osztály publikus konstruktora
 	public VegzetHegyeView(VegzetHegye vH){
 		vegzetHegye = vH;
 		notifyChanged();
 	}
 	
-	@Override
+//Ha a Végzet hegyének állapota módosul, ez a függvény hívódik meg
 	public void notifyChanged() {
 		Drawables.getInstance().remove(this);
 		Drawables.getInstance().add(this);
 		
 	}
 
-	@Override
+//A végzet hegye kirajzolását végezzük itt el az elõre beállított koordinátákra.
 	public void paint() {
 		int x = vegzetHegye.getSajatUt().getCoord().x;
 		int y = vegzetHegye.getSajatUt().getCoord().y;

@@ -7,16 +7,18 @@ import javax.swing.ImageIcon;
 
 import szoftlab4.Kod;
 
+//A ködhöz tartozó View osztály
 public class KodView implements BaseView {
 
 	private Kod kod;
 	
+//Az osztály publikus konstruktora. Beállítjuk hogy melyik ködhöz tartozunk, és meghívjuk a notifyChanged metódust.
 	public KodView(Kod k){
 		kod = k;
 		notifyChanged();
 	}
 	
-	@Override
+//Ha az út állapotában változás történik, ez a függvény hívódik meg
 	public void notifyChanged() {
 		Drawables.getInstance().remove(this);
 		
@@ -25,7 +27,7 @@ public class KodView implements BaseView {
 		
 	}
 
-	
+//Itt rajzoljuk ki az ködöt
 	public void paint() {
 		int x = kod.getTorony().getSajatMezo().getCoord().x;
 		int y = kod.getTorony().getSajatMezo().getCoord().y;

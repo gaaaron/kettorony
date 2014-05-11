@@ -2,22 +2,24 @@ package view;
 
 import szoftlab4.Jatekos;
 
+//A játékoshoz tartozó View osztály
 public class JatekosView implements BaseView {
 
 	private Jatekos jatekos;
 	
+//A View osztály publikus konstruktora
 	public JatekosView(Jatekos j){
 		jatekos = j;
 	}
 	
-	@Override
+//Ez hívódik meg, ha a játékos állapotában változás következik be.
 	public void notifyChanged() {
 		Drawables.getInstance().remove(this);
 		Drawables.getInstance().add(this);	
 	}
 
+//Itt írjuk ki a felhasználó aktuális dolgait a bal oldali SideMenube.
 	public void paint() {
-		//TODO: köveket is jelezzük ki..
 		if(SideMenu.sideMenu != null){
 			SideMenu.sideMenu.varazsero.setText(String.format("%4d", jatekos.varazsero));
 			SideMenu.sideMenu.zoldcount.setText(String.format("%4d", jatekos.varazskoszam[6]));

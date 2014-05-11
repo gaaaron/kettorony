@@ -19,6 +19,7 @@ import szoftlab4.Mezo;
 import szoftlab4.Torony;
 import szoftlab4.Ut;
 
+//Window osztály. Ez építi fel az egész keretet, és játékablakot
 public class Window extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -28,6 +29,7 @@ public class Window extends JPanel {
 	private JLabel statusbar;
 	boolean voltmar = false;
 
+//Window osztály publikus konstruktora, melyben példányosítjuk az egyes komponenseket
 	public Window(final Game game) {
 		window = this;
 		frame = new JFrame();
@@ -36,30 +38,38 @@ public class Window extends JPanel {
 		this.game = game;
 
 		Drawables.getInstance().setGraphics(getGraphics());
-		
+
+//A bal oldalon található Menut példányosítjuk, ahol a felhasználó például köveket tud vásárolni, vagy új tornyot építeni
 		SideMenu.sideMenu = new SideMenu(game);
 		frame.add(SideMenu.sideMenu, BorderLayout.WEST);
 		
+//A középsõ panelben fog kirajzolódni maga a játéktér
 		JPanel center = new JPanel();
 		//window.setPreferredSize(new Dimension(800,650));
+		
+//Statusbar, ahova az események kimenetelét tudjuk kiírni. Például "Torony létrehozva"
 		statusbar = new JLabel("<html><br/>Védd meg a Szarumán hatalmát a Gyûrû Szövetségének gonosz támadásaitól! ..És jól vigyázz! Egy apró hobbit is sokat sebezhet!</html>");
 		statusbar.setFont(new Font("Arial", Font.BOLD, 12));
 		
+//Hozzáadjuk az elkészült elemeket az ablakhoz
 		center.add(window, BorderLayout.CENTER);
 		center.add(statusbar, BorderLayout.SOUTH);
 		frame.add(center, BorderLayout.CENTER);
 		
 		// this.getGraphics().
+//És láthatóvá tesszük
 		frame.pack();
 		frame.setVisible(true);
 		frame.setPreferredSize(new Dimension(900, 670));
 		frame.setMinimumSize(new Dimension(900, 670));
-		
+	
+//MouseListener hozzáadása. A játéktéren történõ kattintásokat fogja feldolgozni, a sideMenuben beállított állapotban megfelelõen
         addMouseListener(new MouseAdapter() {
 
-            @Override
+//Akkor dolgozunk, hogyha az egeren kattintottak
             public void mousePressed(MouseEvent e) {
             	Application.return_message.text = null;
+//Megnézzük hogy hol történt kattintás
             	String[] t = null;
             	int y = e.getX()/70;
             	int x = e.getY()/70;
@@ -67,9 +77,11 @@ public class Window extends JPanel {
             	boolean mezo = false;
             	Cella c = game.jatekter.cellak.get(x).get(y);
             	if(c instanceof Mezo) mezo = true;
-            	
+       
+//És a sideMenuben beállított értéknek megfelelõen felépítjuk a parancstömböt, és meghívjuk a parancsot
             	switch(SideMenu.whatwhat){
             	case 0: break;
+//Csapda hozzáadása a játéktérhez
             	case 1: 
             		if(!mezo){
             		t = new String[4];
@@ -81,6 +93,7 @@ public class Window extends JPanel {
             		}
             		else Application.return_message.text="Mezõre nem tehetsz akadályt";
             		break;
+//Új torony hozzáadása a játéktérhez
             	case 2:
               		t = new String[4];
               		if(mezo){
@@ -92,6 +105,8 @@ public class Window extends JPanel {
               		}
               		else Application.return_message.text="Útra nem tehetsz tornyot";
             		break;
+            		
+//Torony fejlesztése a kiválasztott kõvel
             	case 3:
           			Torony torony = null;
           			Mezo m = null;
@@ -113,6 +128,7 @@ public class Window extends JPanel {
                 		switch(SideMenu.combo.getSelectedIndex()){
                 		case 0: t[2] = new String("barna");break;
                 		case 1: t[2] = new String("kek");break;
+                		case 2: Application.return_message.text = "Ide nem tehetsz toronykövet"; return;
                 		case 3: t[2] = new String("narancs");break;
                 		case 4: t[2] = new String("piros");break;
                 		case 5: t[2] = new String("sarga");break;
@@ -124,6 +140,7 @@ public class Window extends JPanel {
               		else Application.return_message.text = "Ide nem tehetsz toronykövet";
             		
             		break;
+//Akadály fejlesztése hogyha a lila kõ van kiválasztva, és a felhasználó birtokol ilyen színû követ
             	case 4: 
               		t = new String[2];
               		if(!mezo){
@@ -142,7 +159,7 @@ public class Window extends JPanel {
                 repaint();
             }
 
-            @Override
+//Az egér felengedésére nem történik semmi
             public void mouseReleased(MouseEvent e) {
             }
         });

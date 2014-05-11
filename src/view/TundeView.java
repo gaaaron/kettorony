@@ -7,23 +7,24 @@ import javax.swing.ImageIcon;
 
 import szoftlab4.Tunde;
 
+//A Tünde nevû ellenség kirajzolását megvalósító osztály
 public class TundeView implements BaseView {
 
 	private Tunde tunde;
-
+//Az osztály publikus konstruktora
 	public TundeView(Tunde t) {
 		tunde = t;
 		Drawables.getInstance().add(this);
 	}
 
 	
-	@Override
+//Ha Tünde állapotában változás történik, ez a függvény hívódik meg
 	public void notifyChanged() {
 		Drawables.getInstance().remove(this);
 		if(tunde.getSajatUt() != null) Drawables.getInstance().add(this); //ha nincs sajátút, akkor csak törlünk (ellenség meghalt)
 	}
 
-	@Override
+//Itt rajzoljuk ki Tündét
 	public void paint() {
 		int x = tunde.getSajatUt().getCoord().x;
 		int y = tunde.getSajatUt().getCoord().y;

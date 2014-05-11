@@ -7,6 +7,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -41,7 +43,7 @@ public class SideMenu extends JPanel {
 	//4:fejlesztakadály
 	
 	
-	
+//A SideMenu publikus konstruktora. Példányosítjuk a komponenseket, beállítjuk a tulajdonságaikat.	
 	public SideMenu(final Game game){	
 		this.game =game;
 		sideMenu=this;
@@ -51,14 +53,17 @@ public class SideMenu extends JPanel {
 		setAlignmentY(0.0f);
 		setAlignmentX(0.0f);
 		
+//Alapból nincsen kiválasztva semmi funkció
 		whatwhat = 0;
 		
+//Panel a fõmenünek
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setAlignmentY(0.0f);
 		panel_1.setBounds(0, 0, 125, 60);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+	
+//Új játék gomb
 		JButton button = new JButton("\u00DAj j\u00E1t\u00E9k");
 		button.setSize(new Dimension(95, 23));
 		button.setPreferredSize(new Dimension(95, 23));
@@ -67,6 +72,7 @@ public class SideMenu extends JPanel {
 		button.setBackground(new Color(204, 204, 204));
 		panel_1.add(button);
 		
+//Ha rákattintanak, új játékot kezdünk
 		button.addActionListener(new ActionListener() {
        	 
             public void actionPerformed(ActionEvent e)
@@ -76,6 +82,7 @@ public class SideMenu extends JPanel {
             }
         }); 
 		
+//Kilépés gomb
 		JButton button_1 = new JButton("Kil\u00E9p\u00E9s");
 		button_1.setSize(new Dimension(95, 23));
 		button_1.setPreferredSize(new Dimension(95, 23));
@@ -83,6 +90,7 @@ public class SideMenu extends JPanel {
 		button_1.setFont(new Font("Arial", Font.BOLD, 11));
 		button_1.setBackground(new Color(204, 204, 204));
 		
+//Ha rákattintanak a kilépés gombra, meglepõ módon kilép :)
         button_1.addActionListener(new ActionListener() {
         	 
             public void actionPerformed(ActionEvent e)
@@ -94,6 +102,7 @@ public class SideMenu extends JPanel {
 		
 		panel_1.add(button_1);
 		
+//Új panel a kövek megvásárlásához
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
 		panel_2.setAlignmentY(0.0f);
@@ -108,6 +117,9 @@ public class SideMenu extends JPanel {
 		JLabel label_1 = new JLabel("Toronyk\u00F6vek");
 		label_1.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_2.add(label_1);
+		
+//Innentõl kezdve fel vannak sorolva a toronykövek. Rákattintva megvásárlásra kerülnek, hogyha a játékosnak van elegendõ
+//varázsereje mûvelethez
 		
 		JButton button_2 = new JButton("z\u00F6ld");
 		button_2.setIcon(new ImageIcon("img\\zold.png"));
@@ -170,7 +182,7 @@ public class SideMenu extends JPanel {
 		
 		JButton button_5 = new JButton("piros");
 		button_5.setIcon(new ImageIcon("img\\piros.png"));
-		button_5.setToolTipText("N\u00F6veli a torony t\u00F6rp\u00E9n ejtett seb\u00E9s\u00E9t.");
+		button_5.setToolTipText("N\u00F6veli a torony t\u00F6rp\u00E9n ejtett sebz\u00E9s\u00E9t.");
 		button_5.setSize(new Dimension(95, 23));
 		button_5.setPreferredSize(new Dimension(95, 23));
 		button_5.setHorizontalAlignment(SwingConstants.LEFT);
@@ -226,7 +238,8 @@ public class SideMenu extends JPanel {
         });
 		
 		panel_2.add(button_7);
-		
+
+//Innentõl a Lila akadály követ tudjuk megvásárolni
 		JLabel label_2 = new JLabel("Akad\u00E1lyk\u0151");
 		label_2.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_2.add(label_2);
@@ -256,7 +269,7 @@ public class SideMenu extends JPanel {
 		label.setFont(new Font("Arial", Font.BOLD, 13));
 		panel_2.add(ujpalyaelem);
 		
-		
+//Új torony gomb. Rákattintva, majd egy mezõt kiválasztva egy tornyot tudunk építeni
 		JButton button9 = new JButton("\u00DAj torony");
 		button9.setSize(new Dimension(95, 23));
 		button9.setPreferredSize(new Dimension(95, 23));
@@ -275,7 +288,7 @@ public class SideMenu extends JPanel {
 		panel_2.add(button9);
 		
 
-		
+//Új akadály gomb. Rákattintva, majd egy utat kiválasztva egy új akadály tudunk létrehozni, amennyibe van rá elég suskánk
 		JButton button10 = new JButton("\u00DAj akad\u00E1ly");
 		button10.setSize(new Dimension(95, 23));
 		button10.setPreferredSize(new Dimension(95, 23));
@@ -291,7 +304,8 @@ public class SideMenu extends JPanel {
         });
 		
 		panel_2.add(button10);
-		
+
+//Fejlesztés funkciót tudjuk kiválasztani, mely segítségével köveket pakolhatunk a játékelemekre.
 		JButton button11 = new JButton("Fejleszt\u00E9s");
 		button11.setSize(new Dimension(95, 23));
 		button11.setPreferredSize(new Dimension(95, 23));
@@ -311,16 +325,25 @@ public class SideMenu extends JPanel {
         });
 		
 		panel_2.add(button11);
-		
+	
+//Itt tudjuk kiválasztani hogy milyen kõvel szeretnék felszerelni a pályaelemeket.
 		String[] ko = { "Barna", "K\u00E9k", "Lila", "Narancs", "Piros", "S\u00E1rga", "Z\u00F6ld"};
 		combo = new JComboBox(ko);
+		
+	    combo.addItemListener(new ItemListener() {
+	        public void itemStateChanged(ItemEvent arg0) {
+	            if(combo.getSelectedIndex() == 2) whatwhat = 4;
+	            else whatwhat = 3;
+	        }
+	    });
+		
 		panel_2.add(combo);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 60, 105, 2);
 		add(separator);
 		
-		
+//Panel, mely a felhasználó birtokában lévõ dolgokat mutatja ki
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(0, 450, 125, 272);
 		panel_3.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -331,6 +354,8 @@ public class SideMenu extends JPanel {
 		JLabel lblNewLabel = new JLabel("J\u00E1t\u00E9kos         ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
 		panel_3.add(lblNewLabel);
+	
+//Itt írjuk ki a játékos varázserejét
 		
 		JLabel lblVarzser = new JLabel("Var\u00E1zser\u0151:");
 		lblVarzser.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -340,6 +365,8 @@ public class SideMenu extends JPanel {
 		varazsero.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(varazsero);
 		
+		
+//Az itt következõ részben íratjuk ki a felhasználó által birtokolt varázskövek mennyiségét
 		JLabel lblZldVarzsk = new JLabel("Z\u00F6ld var\u00E1zsk\u0151: ");
 		lblZldVarzsk.setFont(new Font("Arial", Font.PLAIN, 11));
 		panel_3.add(lblZldVarzsk);
