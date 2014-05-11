@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -58,11 +59,14 @@ public class Window extends JPanel {
 		
 		// this.getGraphics().
 //És láthatóvá tesszük
+		frame.setLocation(new Point(0, 0));
+		frame.setPreferredSize(new Dimension(1024, 768));
+		frame.setSize(new Dimension(1024, 768));
+		frame.setMinimumSize(new Dimension(1024, 768));
+		frame.setSize(1024, 768);
+		frame.setResizable(false);
 		frame.pack();
 		frame.setVisible(true);
-		frame.setPreferredSize(new Dimension(900, 670));
-		frame.setMinimumSize(new Dimension(900, 670));
-	
 //MouseListener hozzáadása. A játéktéren történõ kattintásokat fogja feldolgozni, a sideMenuben beállított állapotban megfelelõen
         addMouseListener(new MouseAdapter() {
 
