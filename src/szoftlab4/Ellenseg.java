@@ -102,7 +102,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 
 	// Kiválaszt egy utat ahova lépni szeretne
 	public void lepek(ArrayList<Ut> utak) {
-
+		
 		//if (elozoUt != null) {
 		//	utak.remove(elozoUt);
 		//}
