@@ -106,25 +106,31 @@ public class Ellenseg implements Utravalo, Aktiv {
 		//if (elozoUt != null) {
 		//	utak.remove(elozoUt);
 		//}
-		
+			
 		if (utak.size() > 0) {
-			Random randomGenerator = new Random();
-			int index = randomGenerator.nextInt(utak.size());
-
-			Ut kovetkezout = utak.get(index);
+			Ut kovetkezout;
 			
-			if(joutak == null || myvalid<Application.ervenyesseg){
-				joutak = Collections.synchronizedList(new ArrayList<Ut>());
-				Application.game.hegy.tavolsag(sajatUt, new ArrayList<Ut>(), joutak);
-				myvalid = Application.ervenyesseg;
-				//if(joutak.size() != 0) joutak.remove(joutak.size()-1);
+			if(utak.contains(Application.game.hegy.getSajatUt())) kovetkezout = Application.game.hegy.getSajatUt();
+			else{
+				
+				Random randomGenerator = new Random();
+				int index = randomGenerator.nextInt(utak.size());
+	
+				kovetkezout = utak.get(index);
+				
+				if(joutak == null || myvalid<Application.ervenyesseg){
+					joutak = Collections.synchronizedList(new ArrayList<Ut>());
+					Application.game.hegy.tavolsag(sajatUt, new ArrayList<Ut>(), joutak);
+					myvalid = Application.ervenyesseg;
+					//if(joutak.size() != 0) joutak.remove(joutak.size()-1);
+				}
+				
+				if(joutak.size()-1 >=0 ){
+					kovetkezout = joutak.get(joutak.size()-1);
+					joutak.remove(joutak.size()-1);
+				}
+				
 			}
-			
-			if(joutak.size()-1 >=0 ){
-				kovetkezout = joutak.get(joutak.size()-1);
-				joutak.remove(joutak.size()-1);
-			}
-
 			elozoUt = sajatUt;
 
 			sajatUt.levesz(this);
