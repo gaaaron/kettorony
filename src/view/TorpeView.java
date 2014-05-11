@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -32,5 +33,7 @@ public class TorpeView implements BaseView {
 			Image image = new ImageIcon("img/torp.png").getImage();
 			Graphics g = Drawables.getInstance().getGraphics();
 			g.drawImage(image, x*70, y*70, null);
+			g.setFont(new Font("Arial", Font.BOLD, 9));
+			g.drawString(String.format("%4d", torpe.elet), x*70, y*70+12);
 		}
 }
