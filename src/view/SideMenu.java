@@ -79,6 +79,7 @@ public class SideMenu extends JPanel {
             {
                 //Execute when button is pressed
                game.controller.startTick();
+               Window.enabled = true;
             }
         }); 
 		

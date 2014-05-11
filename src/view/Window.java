@@ -29,6 +29,7 @@ public class Window extends JPanel {
 	private JFrame frame = new JFrame("Két Torony");
 	private JLabel statusbar;
 	boolean voltmar = false;
+	static boolean enabled = false;
 
 //Window osztály publikus konstruktora, melyben példányosítjuk az egyes komponenseket
 	public Window(final Game game) {
@@ -54,6 +55,7 @@ public class Window extends JPanel {
 		
 //Hozzáadjuk az elkészült elemeket az ablakhoz
 		center.add(window, BorderLayout.CENTER);
+		center.setPreferredSize(new Dimension(1000, 768));
 		center.add(statusbar, BorderLayout.SOUTH);
 		frame.add(center, BorderLayout.CENTER);
 		
@@ -69,6 +71,7 @@ public class Window extends JPanel {
             public void mousePressed(MouseEvent e) {
             	Application.return_message.text = null;
 //Megnézzük hogy hol történt kattintás
+            	if(!enabled) return;
             	String[] t = null;
             	int y = e.getX()/70;
             	int x = e.getY()/70;
