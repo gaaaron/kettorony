@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -35,5 +36,11 @@ public class TorpeView implements BaseView {
 			g.drawImage(image, x*70, y*70, null);
 			g.setFont(new Font("Arial", Font.BOLD, 9));
 			g.drawString(String.format("%4d", torpe.elet), x*70, y*70+12);
+			
+			g.setColor(Color.white);
+			g.fillRect(x*70+0, y*70, 50, 5);
+			g.setColor(Color.green);
+			double lifebar =((double)torpe.elet/(double)200)*(double)50;
+			g.fillRect(x*70+0, y*70, (int) lifebar , 4);
 		}
 }
