@@ -39,7 +39,7 @@ public class AkadalyView implements BaseView {
 		
 		if(akadaly.ko!=null)
 		{
-			g.drawImage(lila, x*70, x*70+50, null);
+			g.drawImage(lila, x*70, y*70+50, null);
 		}
 	}
 
