@@ -69,6 +69,9 @@ public class VegzetHegye implements Utravalo, Aktiv{
 		
 		if(ut == sajatUt) return true;
 		
+		if(ut == null) return false;
+		else if(ut.lepnek() == null) return false;
+		
 		for(Ut uu : ut.lepnek()){
 			if(tavolsag(uu,bejarva,joutak)){
 				joutak.add(uu);

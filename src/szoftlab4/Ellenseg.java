@@ -98,7 +98,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 
 	// Kiválaszt egy utat ahova lépni szeretne
 	public void lepek(ArrayList<Ut> utak) {
-
+		synchronized(Application.lock){
 		//if (elozoUt != null) {
 		//	utak.remove(elozoUt);
 		//}
@@ -125,6 +125,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 			kovetkezout.ratesz(this);
 			if (view != null)
 				view.notifyChanged();
+		}
 		}
 	}
 
