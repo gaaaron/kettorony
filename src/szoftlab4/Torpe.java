@@ -10,9 +10,9 @@ public class Torpe extends Ellenseg {
 	public Torpe(Ut sajat) {
 		super(sajat);
 		elet = 200;
-		ertek = 140;
+		ertek = 100;
 		count = 0;
-		sebesseg=3;
+		sebesseg=2;
 		view = new TorpeView(this);
 	}
 	

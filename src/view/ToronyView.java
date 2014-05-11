@@ -36,6 +36,7 @@ public class ToronyView implements BaseView {
 	}
 	//Itt rajzoljuk ki a tornyot
 	public void paint() {
+		if(torony.getSajatMezo()!=null){
 		kovek = new int[6];
 		for(int i=0;i<6;i++)
 		{
@@ -95,6 +96,7 @@ public class ToronyView implements BaseView {
 				g.drawImage(zold, x*70+7,y*70,null);
 				g.drawString(String.format("%4d",kovek[5]), x*70+8, y*70+13);
 			}
+		}
 		}
 		
 	}

@@ -31,16 +31,18 @@ public class AkadalyView implements BaseView {
 //Az akadály kirajzolását megvalósító függvény
 //Megnézi, hogy milyen koordinátákra kell rajzolnia, és betölti, majd kirajzolja az akadály képét
 	public void paint() {
-		int x = akadaly.getSajatUt().getCoord().x;
-		int y = akadaly.getSajatUt().getCoord().y;
-		Image image = new ImageIcon("img/akadaly.png").getImage();
-		Image lila = new ImageIcon("img\\lila.png").getImage();
-		Graphics g = Drawables.getInstance().getGraphics();
-		g.drawImage(image, x*70, y*70, null);
-		
-		if(akadaly.ko!=null)
-		{
-			g.drawImage(lila, x*70, y*70+50, null);
+		if(akadaly.getSajatUt()!=null){
+			int x = akadaly.getSajatUt().getCoord().x;
+			int y = akadaly.getSajatUt().getCoord().y;
+			Image image = new ImageIcon("img/akadaly.png").getImage();
+			Image lila = new ImageIcon("img\\lila.png").getImage();
+			Graphics g = Drawables.getInstance().getGraphics();
+			g.drawImage(image, x*70, y*70, null);
+			
+			if(akadaly.ko!=null)
+			{
+				g.drawImage(lila, x*70, y*70+50, null);
+			}
 		}
 	}
 

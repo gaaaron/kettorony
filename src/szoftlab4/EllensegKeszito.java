@@ -83,7 +83,7 @@ public class EllensegKeszito implements Aktiv {
 			String mitad = null;			
 			
 			Random randomGenerator = new Random();
-			int index = randomGenerator.nextInt(3);
+			int index = randomGenerator.nextInt(4);
 	        
 			switch(index)
 			{

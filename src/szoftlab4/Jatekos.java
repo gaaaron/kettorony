@@ -74,10 +74,10 @@ public class Jatekos {
 	public boolean ujAkadaly(Ut valasztottUt, Akadaly ezt, Application.Message msg) {
 
 		    	Application.hozzanyulhatsz = false;
-				if(varazsero>=20){
+				if(varazsero>=100){
 					valasztottUt.akadaly = ezt;
 					ezt.init(valasztottUt);
-					varazserotVeszit(20);
+					varazserotVeszit(100);
 					msg.text = "Akadály létrehozva";
 					Application.hozzanyulhatsz = true;
 					Application.ervenyesseg+=1;
@@ -96,9 +96,9 @@ public class Jatekos {
 	//Egy új Tornyot hozhatunk létre, ha van rá elég varázserõnk
 	public boolean ujTorony(Mezo valasztottMezo, Torony ezt, Application.Message msg) {
 		
-		if(varazsero>=10){
+		if(varazsero>=120){
 			valasztottMezo.ratesz(ezt);
-			varazserotVeszit(10);
+			varazserotVeszit(120);
 			ezt.init(valasztottMezo);
 			msg.text = "Torony létrehozva";
 			return true;
@@ -144,17 +144,17 @@ public class Jatekos {
 			view.notifyChanged();
 			varazserotVeszit(30);
 		}
-		else if (koTipus.matches("sarga")){
+		else if (koTipus.matches("sarga") && varazsero > 100){
 			varazskovek.add(new Sargavarazsko());
 			varazskoszam[5]+=1;
 			view.notifyChanged();
-			varazserotVeszit(30);
+			varazserotVeszit(100);
 		}
-		else if (koTipus.matches("zold")){
+		else if (koTipus.matches("zold") && varazsero > 100){
 			varazskovek.add(new Zoldvarazsko());
 			varazskoszam[6]+=1;
 			view.notifyChanged();
-			varazserotVeszit(30);
+			varazserotVeszit(100);
 		}
 		else{
 			return;

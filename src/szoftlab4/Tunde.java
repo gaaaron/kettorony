@@ -10,9 +10,9 @@ public class Tunde extends Ellenseg{
 	public Tunde(Ut sajat) {
 		super(sajat);
 		elet = 170;
-		ertek = 150;
+		ertek = 100;
 		count = 0;
-		sebesseg=3;
+		sebesseg=4;
 		view = new TundeView(this);
 	}
 	

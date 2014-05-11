@@ -7,8 +7,8 @@ public class Hobbit extends Ellenseg {
 	
 	public Hobbit(Ut sajat) {
 		super(sajat);
-		elet = 150;
-		ertek = 110;
+		elet = 100;
+		ertek = 60;
 		count = 0;
 		sebesseg=3;
 		view = new HobbitView(this);

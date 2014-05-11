@@ -11,10 +11,10 @@ public class Ember extends Ellenseg {
 	public Ember(Ut sajat) {
 		super(sajat);
 		elet = 100;
-		view = new EmberView(this);
 		ertek = 100;
 		count = 0;
 		sebesseg=3;
+		view = new EmberView(this);
 	}
 	
 	//Paraméterként kap egy lövedéket, és a rá vonatkozó értékkel sebzi magát
