@@ -72,19 +72,26 @@ public class Jatekos {
 
 	//Egy új akadályt hozhatunk létre, ha van rá elég varázserõnk
 	public boolean ujAkadaly(Ut valasztottUt, Akadaly ezt, Application.Message msg) {
-		
-		if(varazsero>=20){
-			valasztottUt.akadaly = ezt;
-			ezt.init(valasztottUt);
-			varazserotVeszit(20);
-			msg.text = "Akadály létrehozva";
-			return true;
-		}else{
-			msg.text = "Nincs elég varázserõ";
-			return false;
+
+		    	Application.hozzanyulhatsz = false;
+				if(varazsero>=20){
+					valasztottUt.akadaly = ezt;
+					ezt.init(valasztottUt);
+					varazserotVeszit(20);
+					msg.text = "Akadály létrehozva";
+					Application.hozzanyulhatsz = true;
+					Application.ervenyesseg+=1;
+					return true;
+				}else{
+					msg.text = "Nincs elég varázserõ";
+					Application.hozzanyulhatsz = true;
+					return false;
+				
+		        
+		    }
 		}
-		
-	}
+
+	
 
 	//Egy új Tornyot hozhatunk létre, ha van rá elég varázserõnk
 	public boolean ujTorony(Mezo valasztottMezo, Torony ezt, Application.Message msg) {

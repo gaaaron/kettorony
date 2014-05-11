@@ -1,5 +1,7 @@
 package szoftlab4;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -10,6 +12,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 	public String id;
 
 	public int count;
+	public int myvalid;
 
 	public int irany = 3;
 
@@ -33,7 +36,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 
 	protected BaseView view;
 	
-	private ArrayList<Ut> joutak = null;
+	private List<Ut> joutak = null;
 
 	// Az Ellenség osztály konstruktora
 	// Leszármazott osztályban felülírni!
@@ -42,6 +45,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 		elet = 0;
 		ertek = 0;
 		sebesseg = 0;
+		myvalid = -1;
 	}
 
 	// Ha tick történik a rendszerben, ez a függvény hívódik meg
@@ -102,15 +106,17 @@ public class Ellenseg implements Utravalo, Aktiv {
 		//if (elozoUt != null) {
 		//	utak.remove(elozoUt);
 		//}
+		
 		if (utak.size() > 0) {
 			Random randomGenerator = new Random();
 			int index = randomGenerator.nextInt(utak.size());
 
 			Ut kovetkezout = utak.get(index);
 			
-			if(joutak == null){
-				joutak = new ArrayList<Ut>();
+			if(joutak == null || myvalid<Application.ervenyesseg){
+				joutak = Collections.synchronizedList(new ArrayList<Ut>());
 				Application.game.hegy.tavolsag(sajatUt, new ArrayList<Ut>(), joutak);
+				myvalid = Application.ervenyesseg;
 				//if(joutak.size() != 0) joutak.remove(joutak.size()-1);
 			}
 			
@@ -127,6 +133,7 @@ public class Ellenseg implements Utravalo, Aktiv {
 				view.notifyChanged();
 		}
 	}
+
 
 	// A sajatUt attribútumot inicializálja
 	public void init(Ut sajat) {

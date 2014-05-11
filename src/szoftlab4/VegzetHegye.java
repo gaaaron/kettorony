@@ -1,6 +1,7 @@
 package szoftlab4;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import view.VegzetHegyeView;
 
@@ -52,24 +53,25 @@ public class VegzetHegye implements Utravalo, Aktiv{
 	}
 	@Override
 	public void tick() {
+		
 		ArrayList<Ellenseg> ellensegek = sajatUt.kivanrajtam();
 		
 		for(Ellenseg e: ellensegek){
 			e.tamad(this);
 		}
-		
 	}
 	public Ut getSajatUt() {
 		return sajatUt;
 	}
 	
-	public boolean tavolsag(Ut ut, ArrayList<Ut> bejarva, ArrayList<Ut> joutak){
+	public boolean tavolsag(Ut ut, ArrayList<Ut> bejarva, List<Ut> joutak){
 		if(bejarva.contains(ut)) return false;
 		bejarva.add(ut);
 		
+		
 		if(ut == sajatUt) return true;
 		
-		for(Ut uu : ut.lepnek()){
+		for(Ut uu : ut.lepneeeek()){
 			if(tavolsag(uu,bejarva,joutak)){
 				joutak.add(uu);
 				return true;

@@ -26,6 +26,8 @@ public class EllensegKeszito implements Aktiv {
 		//Tick hatására választ egy utat, majd bizonyos valószínûséggel lerak oda egy
 		//véletlenül kiválasztott ellenséget
 		public void tick(){  
+			
+			
 			osztodottBetesz();
 			meghaltKivesz();
 			
@@ -69,8 +71,7 @@ public class EllensegKeszito implements Aktiv {
 				}
 					
 			}
-		}
-		
+		}	
 		//Véletlenszerûen kiválaszt egy ellenségtípust, és visszaadja azt String-ként
 		public String getEllensegTipus(){
 			String mitad = null;			

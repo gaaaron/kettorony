@@ -21,6 +21,9 @@ public class Application {
 	public static Game game = new Game();
 	//public static TesztAblak ablak;
 	public static Message return_message;
+	public static Object foo;
+	public static boolean hozzanyulhatsz;
+	public static int ervenyesseg;
 
 
 	/*
@@ -56,6 +59,9 @@ public class Application {
 		}
 	}
 	public static void main(String[] args) {
+		foo = new Object();
+		hozzanyulhatsz = true;
+		ervenyesseg = 0;
 		try {
 			startProto();
 		} catch (Exception e) {

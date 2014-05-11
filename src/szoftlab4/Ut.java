@@ -90,6 +90,19 @@ public class Ut extends Cella{
 		} else return null;
 	}
 	
+	
+	public ArrayList<Ut> lepneeeek()					
+	{
+
+		ArrayList<Ut> temp = new ArrayList<Ut>();
+		ArrayList<Cella> cellak = getSzomszedok();
+		for(int i = 0; i<cellak.size();i++){
+			if(cellak.get(i) instanceof Ut)
+				temp.add((Ut)cellak.get(i));
+		}
+		return temp;
+	}
+	
 	public UtView getView(){
 		return view;
 	}
