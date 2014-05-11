@@ -59,12 +59,7 @@ public class Window extends JPanel {
 		
 		// this.getGraphics().
 //És láthatóvá tesszük
-		frame.setLocation(new Point(0, 0));
-		frame.setPreferredSize(new Dimension(1024, 768));
-		frame.setSize(new Dimension(1024, 768));
-		frame.setMinimumSize(new Dimension(1024, 768));
-		frame.setSize(1024, 768);
-		frame.setResizable(false);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.pack();
 		frame.setVisible(true);
 //MouseListener hozzáadása. A játéktéren történõ kattintásokat fogja feldolgozni, a sideMenuben beállított állapotban megfelelõen
