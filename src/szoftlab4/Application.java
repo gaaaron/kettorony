@@ -21,8 +21,6 @@ public class Application {
 	public static Game game = new Game();
 	//public static TesztAblak ablak;
 	public static Message return_message;
-	
-	public static Object lock = new Object();
 
 
 	/*
@@ -681,7 +679,6 @@ public class Application {
 
 	}
 	public static boolean addtrap(String[] args, Application.Message msg) {
-		synchronized(lock){
 		int sor = Integer.parseInt(args[2]);
 		int oszlop = Integer.parseInt(args[3]);
 		boolean joid = true;
@@ -722,7 +719,6 @@ public class Application {
 		} else {
 			msg.text = "Mar letezo ID";
 			return false;
-		}
 		}
 	}
 
