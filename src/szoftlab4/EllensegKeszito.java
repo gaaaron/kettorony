@@ -10,6 +10,7 @@ public class EllensegKeszito implements Aktiv {
 		public ArrayList<Ellenseg> osztodott;
 		public ArrayList<Ellenseg> meghalt;
 		private int id=0;
+		private int enemyNumber;
 		
 		//Az EllensegKeszito paraméteres konstruktora. Át kell neki adni a belépõutak listáját.
 		/*public EllensegKeszito(ArrayList<Ut> utak){
@@ -17,10 +18,15 @@ public class EllensegKeszito implements Aktiv {
 			osztodott = new ArrayList<Ellenseg>();
 		}*/
 		
+		public int getEnemyNumber() {
+			return enemyNumber;
+		}
+
 		public EllensegKeszito(){
 			belepoUtak = new ArrayList<Ut>();
 			osztodott = new ArrayList<Ellenseg>();
 			meghalt = new ArrayList<Ellenseg>();
+			enemyNumber = 50 + new Random().nextInt(19);
 		}
 		
 		//Tick hatására választ egy utat, majd bizonyos valószínûséggel lerak oda egy
@@ -34,10 +40,10 @@ public class EllensegKeszito implements Aktiv {
 			Random randomGenerator = new Random();
 			int index = randomGenerator.nextInt(15);
 				
-			if(index == 1){
+			if(index == 1 && enemyNumber>0){
 				
 				String ellenseg;
-					
+				enemyNumber--;	
 				Ut valasztott = utatValaszt();
 				ellenseg = getEllensegTipus();
 					

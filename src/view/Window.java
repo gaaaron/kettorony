@@ -2,14 +2,17 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BoxLayout;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,8 +34,8 @@ public class Window extends JPanel {
 	static Window window = null;
 	private JFrame frame = new JFrame("Két Torony");
 	private JLabel statusbar;
-	boolean voltmar = false;
 	static boolean enabled = false;
+	private boolean end = false;
 
 //Window osztály publikus konstruktora, melyben példányosítjuk az egyes komponenseket
 	public Window(final Game game) {
@@ -80,6 +83,7 @@ public class Window extends JPanel {
             	Application.return_message.text = null;
 //Megnézzük hogy hol történt kattintás
             	if(!enabled) return;
+            	if(end) return;
             	String[] t = null;
             	int y = e.getX()/70;
             	int x = e.getY()/70;
@@ -190,6 +194,8 @@ public class Window extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		setBackground(Color.WHITE);
+		if (game.ellensegkeszito.getEnemyNumber() == 0 && game.ellenseglista.isEmpty() && !end) winWindow();
+		if (game.hegy != null && game.hegy.getElet()<=0 && !end) gameOver();
 		Drawables.getInstance().setGraphics(g);
 		Drawables.getInstance().setMapSize(game.jatekter.cellak.size() * game.jatekter.cellak.get(0).size());	
 
@@ -199,7 +205,39 @@ public class Window extends JPanel {
 			}
 			
 			
-		voltmar = true;
+	}
+
+	private void gameOver() {
+		end = true;
+		game.controller.endgame(true);
+		JDialog frame = new JDialog(this.frame,"Veszítettél!",Dialog.ModalityType.APPLICATION_MODAL);
+		JLabel label = new JLabel("Sajnálom, a játék véget ért!");
+		label.setFont(new Font("Serif", Font.PLAIN, 24));
+		frame.setMinimumSize(new Dimension(200, 150));
+		frame.getContentPane().add(label,BorderLayout.CENTER);
+		frame.pack();
+		frame.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint());
+		frame.setVisible(true);
+		frame.setModal(true);
+		
+		
+		
+	}
+
+	private void winWindow() {
+		game.controller.endgame(true);
+		end = true;
+		JDialog frame = new JDialog(this.frame,"Nyertél!",Dialog.ModalityType.APPLICATION_MODAL);
+		JLabel label = new JLabel("Gratulálok, nyertél!");
+		label.setFont(new Font("Serif", Font.PLAIN, 24));
+		frame.setMinimumSize(new Dimension(200, 150));
+		frame.getContentPane().add(label,BorderLayout.CENTER);
+		frame.pack();
+		frame.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint());
+		frame.setVisible(true);
+		frame.setModal(true);
+
+		
 	}
 	
 	

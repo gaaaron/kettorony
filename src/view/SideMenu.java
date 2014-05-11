@@ -64,7 +64,7 @@ public class SideMenu extends JPanel {
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 	
 //Új játék gomb
-		JButton button = new JButton("\u00DAj j\u00E1t\u00E9k");
+		final JButton button = new JButton("Indít");
 		button.setSize(new Dimension(95, 23));
 		button.setPreferredSize(new Dimension(95, 23));
 		button.setForeground(Color.BLACK);
@@ -78,8 +78,11 @@ public class SideMenu extends JPanel {
             public void actionPerformed(ActionEvent e)
             {
                 //Execute when button is pressed
-               game.controller.startTick();
-               Window.enabled = true;
+               if(!Window.enabled){
+            	   game.controller.startTick();
+            	   Window.enabled = true;
+            	   button.setEnabled(false);
+               }
             }
         }); 
 		
