@@ -12,6 +12,7 @@ import szoftlab4.Akadaly;
 public class AkadalyView implements BaseView {
 
 	private Akadaly akadaly;
+	
 
 //Az osztály publikus konstruktora
 	public AkadalyView(Akadaly a) {
@@ -32,9 +33,14 @@ public class AkadalyView implements BaseView {
 		int x = akadaly.getSajatUt().getCoord().x;
 		int y = akadaly.getSajatUt().getCoord().y;
 		Image image = new ImageIcon("img/akadaly.png").getImage();
+		Image lila = new ImageIcon("img\\lila.png").getImage();
 		Graphics g = Drawables.getInstance().getGraphics();
 		g.drawImage(image, x*70, y*70, null);
 		
+		if(akadaly.ko!=null)
+		{
+			g.drawImage(lila, x*70, x*70+50, null);
+		}
 	}
 
 }

@@ -39,6 +39,14 @@ public class VegzetHegyeView implements BaseView {
 		g.setColor(Color.white);
 		g.setFont(new Font("Arial", Font.BOLD, 12));
 		g.drawString(String.format("%4d", vegzetHegye.elet), x*70, y*70+12);
+		
+		// life bar a vézet hegyének
+		g.setColor(Color.white);
+		g.fillRect(x*70+11, y*70+55, 50, 5);
+		g.setColor(Color.red);
+		double lifebar =((double)vegzetHegye.elet/(double)300)*(double)50;
+		g.fillRect(x*70+11, y*70+55, (int) lifebar , 4);
+		g.setColor(Color.white); // fehér alapszín visszaállítása
 	}
 
 }

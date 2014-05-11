@@ -37,12 +37,13 @@ public class EmberView implements BaseView {
 		g.setFont(new Font("Arial", Font.BOLD, 9));
 		g.drawString(String.format("%4d", ember.elet), x*70, y*70+12);
 		
+		// life-bar az embernek
 		g.setColor(Color.white);
 		g.fillRect(x*70+0, y*70, 50, 5);
 		g.setColor(Color.green);
 		double lifebar =((double)ember.elet/(double)100)*(double)50;
 		g.fillRect(x*70+0, y*70, (int) lifebar , 4);
-		
+		g.setColor(Color.white); // fehér alapszín visszaállítása
 
 	}
 	

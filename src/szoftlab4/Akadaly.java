@@ -14,7 +14,7 @@ public class Akadaly implements Utravalo {
 	private int lassitas;
 	
 	//Amennyiben a torony fel van szerelve kõvel, ennek az értéke nem null.
-	private Lilavarazsko ko;
+	public Lilavarazsko ko;
 	
 	private int counter;
 	
