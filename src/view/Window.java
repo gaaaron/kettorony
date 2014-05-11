@@ -9,9 +9,12 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BoxLayout;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import szoftlab4.Application;
 import szoftlab4.Cella;
@@ -47,19 +50,24 @@ public class Window extends JPanel {
 		
 //A középsõ panelben fog kirajzolódni maga a játéktér
 		JPanel center = new JPanel();
+		center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.add(window);
+		center.add(panel_1);
+		
+//Hozzáadjuk az elkészült elemeket az ablakhoz
+		center.setPreferredSize(new Dimension(1000, 768));
+		
+		JPanel panel_2 = new JPanel();
+		center.add(panel_2);
 		//window.setPreferredSize(new Dimension(800,650));
 		
 //Statusbar, ahova az események kimenetelét tudjuk kiírni. Például "Torony létrehozva"
 		statusbar = new JLabel("<html><br/>Védd meg a Szarumán hatalmát a Gyûrû Szövetségének gonosz támadásaitól! ..És jól vigyázz! Egy apró hobbit is sokat sebezhet!</html>");
+		panel_2.add(statusbar);
 		statusbar.setFont(new Font("Arial", Font.BOLD, 12));
-		
-//Hozzáadjuk az elkészült elemeket az ablakhoz
-		center.add(window, BorderLayout.CENTER);
-		center.setPreferredSize(new Dimension(1000, 768));
-		center.add(statusbar, BorderLayout.SOUTH);
-		frame.add(center, BorderLayout.CENTER);
-		
-		// this.getGraphics().
+		frame.getContentPane().add(center, BorderLayout.CENTER);
 //És láthatóvá tesszük
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.pack();
