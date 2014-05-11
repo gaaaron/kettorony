@@ -15,7 +15,7 @@ public class Torony implements Aktiv, Mezorevalo {
 	private int sebzes;
 	private int counter;
 	private boolean kodos;
-	ArrayList<Toronykovek> kovek;
+	public ArrayList<Toronykovek> kovek;
 	public Kod kod;
 	boolean specprojectile;
 	private ToronyView view;

@@ -34,6 +34,7 @@ public class AkadalyView implements BaseView {
 		Image image = new ImageIcon("img/akadaly.png").getImage();
 		Graphics g = Drawables.getInstance().getGraphics();
 		g.drawImage(image, x*70, y*70, null);
+		
 	}
 
 }
