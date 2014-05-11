@@ -41,9 +41,9 @@ public class Window extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout(0, 0));
 		this.game = game;
-
+		
 		Drawables.getInstance().setGraphics(getGraphics());
-
+		
 //A bal oldalon található Menut példányosítjuk, ahol a felhasználó például köveket tud vásárolni, vagy új tornyot építeni
 		SideMenu.sideMenu = new SideMenu(game);
 		frame.add(SideMenu.sideMenu, BorderLayout.WEST);
@@ -191,6 +191,7 @@ public class Window extends JPanel {
 		super.paintComponent(g);
 		setBackground(Color.WHITE);
 		Drawables.getInstance().setGraphics(g);
+		Drawables.getInstance().setMapSize(game.jatekter.cellak.size() * game.jatekter.cellak.get(0).size());	
 
 			for (int i = 0; i < Drawables.getInstance().getSize(); i++){
 				Drawables.getInstance().get(i).paint();

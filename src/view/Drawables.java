@@ -8,6 +8,7 @@ public class Drawables {
 	ArrayList<BaseView> drawableArray;
 	static Drawables drawables;
 	Graphics g;
+	private int mapSize;
 
 	private Drawables() {
 		drawableArray = new ArrayList<BaseView>();
@@ -52,5 +53,20 @@ public class Drawables {
 
 	public int getSize() {
 		return (drawableArray.size());
+	}
+
+	public void setMapSize(int size) {
+		mapSize = size;
+		
+	}
+	
+	public int getMapSize(){
+		return mapSize;
+	}
+
+	public void add(int i, BaseView v) {
+		drawableArray.add(i, v);
+		Window.getPanel().repaint();
+		
 	}
 }

@@ -23,7 +23,8 @@ public class AkadalyView implements BaseView {
 //Ez a függvény hívódik akkor, hogyha az akadály objektum állapotában változás történik
 	public void notifyChanged() {
 		Drawables.getInstance().remove(this);
-		Drawables.getInstance().add(this);
+		int pozition = Drawables.getInstance().getMapSize();
+		Drawables.getInstance().add(pozition+1, this);
 		
 	}
 
