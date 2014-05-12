@@ -12,7 +12,7 @@ public class Tunde extends Ellenseg{
 		elet = 170;
 		ertek = 100;
 		count = 0;
-		sebesseg=4;
+		sebesseg=2;
 		view = new TundeView(this);
 	}
 	

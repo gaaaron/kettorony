@@ -12,7 +12,7 @@ public class Torpe extends Ellenseg {
 		elet = 200;
 		ertek = 100;
 		count = 0;
-		sebesseg=2;
+		sebesseg=5;
 		view = new TorpeView(this);
 	}
 	

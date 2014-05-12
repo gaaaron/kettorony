@@ -78,6 +78,14 @@ public class Jatekter {
 				if(splitLine.length == 2) 
 					felhasznalo.varazserotKap(Integer.parseInt(splitLine[1]));
 			}
+			
+			//Felhasználó varázserejét beolvassuk a fájlból
+			line = br.readLine();
+			splitLine = line.split("\\s+");
+			if(splitLine[0].equals("PLUSENEMY")){
+				if(splitLine.length == 2) 
+					Application.game.ellensegkeszito.plusenemy = Integer.parseInt(splitLine[1]);
+			}
 
 			//Cella szomszédainak beállítása
 			for(int i=0; i< cellak.size();i++){

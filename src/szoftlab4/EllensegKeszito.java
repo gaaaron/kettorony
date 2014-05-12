@@ -11,6 +11,7 @@ public class EllensegKeszito implements Aktiv {
 		public ArrayList<Ellenseg> meghalt;
 		private int id=0;
 		private int enemyNumber;
+		public int plusenemy;
 		
 		//Az EllensegKeszito paraméteres konstruktora. Át kell neki adni a belépõutak listáját.
 		/*public EllensegKeszito(ArrayList<Ut> utak){
@@ -26,7 +27,7 @@ public class EllensegKeszito implements Aktiv {
 			belepoUtak = new ArrayList<Ut>();
 			osztodott = new ArrayList<Ellenseg>();
 			meghalt = new ArrayList<Ellenseg>();
-			enemyNumber = 50 + new Random().nextInt(19);
+			enemyNumber = 50 + plusenemy + new Random().nextInt(19);
 		}
 		
 		//Tick hatására választ egy utat, majd bizonyos valószínûséggel lerak oda egy
